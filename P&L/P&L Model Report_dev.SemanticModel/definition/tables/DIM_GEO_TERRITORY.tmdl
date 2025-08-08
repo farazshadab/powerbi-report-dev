@@ -1,0 +1,383 @@
+table DIM_GEO_TERRITORY
+	lineageTag: 13f18b65-7206-49b5-a772-3b5f62c10f99
+
+	column BRICK_CODE
+		dataType: string
+		lineageTag: bbb17c14-b8b3-447f-9563-f8294726c4d2
+		summarizeBy: none
+		sourceColumn: BRICK_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column Brick
+		dataType: string
+		lineageTag: 01831f9e-dc16-42b3-bcc2-49b3bca55d46
+		summarizeBy: none
+		sourceColumn: Brick
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Adult NBM'
+		dataType: string
+		lineageTag: 94f203ba-2451-432e-a31b-2caa85d26a1b
+		summarizeBy: none
+		sourceColumn: Adult NBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Adult RBM'
+		dataType: string
+		lineageTag: 631f328b-63b8-48c2-a313-b201c8a6fc17
+		summarizeBy: none
+		sourceColumn: Adult RBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Adult Hospital REP'
+		dataType: string
+		lineageTag: 95eb7fbb-5e25-47eb-91d5-f16305be4683
+		summarizeBy: none
+		sourceColumn: Adult Hospital REP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Adult Community REP'
+		dataType: string
+		lineageTag: 92f22ff6-77ea-49c3-a5b3-1d5113b3dbe3
+		summarizeBy: none
+		sourceColumn: Adult Community REP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paediatric NBM'
+		dataType: string
+		lineageTag: 4929b677-60c6-4552-bb34-543492806659
+		summarizeBy: none
+		sourceColumn: Paediatric NBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paediatric RBM'
+		dataType: string
+		lineageTag: 17a357f0-b0cb-4014-8aae-dade9d6719a9
+		summarizeBy: none
+		sourceColumn: Paediatric RBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paediatric Hospital Rep'
+		dataType: string
+		lineageTag: 9a6585e1-e4e7-4e8f-9ffe-4388a40152d4
+		summarizeBy: none
+		sourceColumn: Paediatric Hospital Rep
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paediatric Community Rep'
+		dataType: string
+		lineageTag: bd213263-8464-44c9-baf0-e64f9421de5e
+		summarizeBy: none
+		sourceColumn: Paediatric Community Rep
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metabolic NBM'
+		dataType: string
+		lineageTag: ae36e64d-5258-4145-a1f5-36e13ce48336
+		summarizeBy: none
+		sourceColumn: Metabolic NBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metabolic RBM'
+		dataType: string
+		lineageTag: 9a62c05f-1a13-4e06-802b-d39c03db3393
+		summarizeBy: none
+		sourceColumn: Metabolic RBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metabolic REP'
+		dataType: string
+		lineageTag: da28095a-dce5-434d-b465-846fe99522c3
+		summarizeBy: none
+		sourceColumn: Metabolic REP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IRELAND COMMUNITY RBM'
+		dataType: string
+		lineageTag: d54ddef1-2e25-456b-8da7-2c070e9bb788
+		summarizeBy: none
+		sourceColumn: IRELAND COMMUNITY RBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IRELAND COMMUNITY REP'
+		dataType: string
+		lineageTag: 6c009e22-f8cf-416d-af88-791173d171be
+		summarizeBy: none
+		sourceColumn: IRELAND COMMUNITY REP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IRELAND HOSPITAL RBM'
+		dataType: string
+		lineageTag: fe23e126-cbd6-4308-b8d2-bac18b057d3b
+		summarizeBy: none
+		sourceColumn: IRELAND HOSPITAL RBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IRELAND HOSPITAL REP'
+		dataType: string
+		lineageTag: e2de7a9f-f26d-4d31-b78e-c8be95ec3ad9
+		summarizeBy: none
+		sourceColumn: IRELAND HOSPITAL REP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IRELAND PAEDIATRIC REP'
+		dataType: string
+		lineageTag: 4ff57407-6ae6-4788-8168-64f9bf09c267
+		summarizeBy: none
+		sourceColumn: IRELAND PAEDIATRIC REP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HDM RBM'
+		dataType: string
+		lineageTag: 3ec1f19f-160a-4170-a536-f3ea8af95da7
+		summarizeBy: none
+		sourceColumn: HDM RBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column HDM_REP
+		dataType: string
+		lineageTag: 8bb1ce89-469a-479e-bb81-2a2c96cb8555
+		summarizeBy: none
+		sourceColumn: HDM_REP
+
+		annotation SummarizationSetBy = Automatic
+
+	column GEO_CCG_ID
+		dataType: double
+		lineageTag: a3655dec-2f96-48ff-9b36-6f364057b683
+		summarizeBy: none
+		sourceColumn: GEO_CCG_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GEO_COUNTRY_ID
+		dataType: double
+		lineageTag: b5d617bd-b2fe-4704-b5ec-06c4e0afc742
+		summarizeBy: none
+		sourceColumn: GEO_COUNTRY_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GEO_TERRITORY_ID
+		dataType: double
+		lineageTag: 8981c75a-6665-4b66-9386-c2aa1137ae0b
+		summarizeBy: none
+		sourceColumn: GEO_TERRITORY_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GEO_CONTRACT_R_ID
+		dataType: double
+		lineageTag: af0692b3-51ad-4934-bf71-1e98324964a3
+		summarizeBy: count
+		sourceColumn: GEO_CONTRACT_R_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ICS
+		dataType: string
+		lineageTag: 06608ad6-39f9-4b20-8fad-b2b79621526e
+		summarizeBy: none
+		sourceColumn: ICS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ONS RBM 2023'
+		dataType: string
+		lineageTag: 0f5924c0-de76-4c4d-a326-688a0d5d00dc
+		summarizeBy: none
+		sourceColumn: ONS RBM 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ONS REP 2023'
+		dataType: string
+		lineageTag: 2c5aecfb-e037-4209-bbb5-719d5debb79f
+		summarizeBy: none
+		sourceColumn: ONS REP 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dispensing Doctor REP 2023'
+		dataType: string
+		lineageTag: 0317f486-7c58-4e52-bfc7-89062e67d5b4
+		summarizeBy: none
+		sourceColumn: Dispensing Doctor REP 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paediatric RBM 2023'
+		dataType: string
+		lineageTag: 34ae5c83-9475-4b23-8680-ff6ced099be0
+		summarizeBy: none
+		sourceColumn: Paediatric RBM 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paediatric REP 2023'
+		dataType: string
+		lineageTag: aea9687d-0322-45ac-9167-2f2293f274f9
+		summarizeBy: none
+		sourceColumn: Paediatric REP 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Enteral RBM 2023'
+		dataType: string
+		lineageTag: 795f1a7e-947b-4893-8c83-36aad0b2ac03
+		summarizeBy: none
+		sourceColumn: Enteral RBM 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Enteral REP 2023'
+		dataType: string
+		lineageTag: 0eb775dc-b234-4c29-8aa8-8e61068663e7
+		summarizeBy: none
+		sourceColumn: Enteral REP 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Adult HDM RBM 2023'
+		dataType: string
+		lineageTag: 4a114a13-766e-4bd1-9006-5009e1b03c71
+		summarizeBy: none
+		sourceColumn: Adult HDM RBM 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Adult HDM 2023'
+		dataType: string
+		lineageTag: 476c1f49-438a-4bef-899c-9afa697a2a4f
+		summarizeBy: none
+		sourceColumn: Adult HDM 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metabolic RBM 2023'
+		dataType: string
+		lineageTag: 8456f310-01c0-4df0-aa20-e6c27c6c9370
+		summarizeBy: none
+		sourceColumn: Metabolic RBM 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metabolic REP 2023'
+		dataType: string
+		lineageTag: ea37fdd5-51f1-4f3d-a191-a6857ab95f0a
+		summarizeBy: none
+		sourceColumn: Metabolic REP 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Paediatric HDM RBM 2023'
+		dataType: string
+		lineageTag: f372295c-2ad0-4114-958b-09883a9f3d8b
+		summarizeBy: none
+		sourceColumn: Paediatric HDM RBM 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pre Term REP 2023'
+		dataType: string
+		lineageTag: 41223185-b9a9-459c-a2c1-3b77070a0868
+		summarizeBy: none
+		sourceColumn: Pre Term REP 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IRELAND PAEDIATRIC RBM 2023'
+		dataType: string
+		lineageTag: dc04fe30-ee8d-45fe-abea-b9500c14f138
+		summarizeBy: none
+		sourceColumn: IRELAND PAEDIATRIC RBM 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'IRELAND PAEDIATRIC COMBINED 2023'
+		dataType: string
+		lineageTag: f373dc26-cac3-499c-89fe-63b66501290e
+		summarizeBy: none
+		sourceColumn: IRELAND PAEDIATRIC COMBINED 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Guideline Name'
+		dataType: string
+		lineageTag: 032a67ad-ddc3-4f52-bf6c-6952031e2817
+		summarizeBy: none
+		sourceColumn: Guideline Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ONS Guideline'
+		dataType: string
+		lineageTag: c6f3f8a4-6a92-4792-8f4e-5e0a5881819f
+		summarizeBy: none
+		sourceColumn: ONS Guideline
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AAF Guideline'
+		dataType: string
+		lineageTag: 5e001fb7-f52a-4499-96a2-577c123e6b70
+		summarizeBy: none
+		sourceColumn: AAF Guideline
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EHF Guideline'
+		dataType: string
+		lineageTag: f25b6f53-ac62-43a7-9466-873943f02885
+		summarizeBy: none
+		sourceColumn: EHF Guideline
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Competitor CAM'
+		dataType: string
+		lineageTag: 03a00750-e29f-470f-b661-a4c3c9007a0d
+		summarizeBy: none
+		sourceColumn: Competitor CAM
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_GEO_TERRITORY = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Implementation="2.0", Role="PRD_SNS_UKI_USER"]){[Name="PRD_SNS_UKI"]}[Data], "SELECT#(lf)     BRICK_CODE,#(lf)     BRICK_NAME as ""Brick"",#(lf)     ADULT_NBM as ""Adult NBM"",#(lf)     ADULT_RBM as ""Adult RBM"",#(lf)     ADULT_HOSPITAL_REP  as ""Adult Hospital REP"",#(lf)     ADULT_COMMUNITY_REP  as ""Adult Community REP"",#(lf)     PAEDIATRIC_NBM as ""Paediatric NBM"",#(lf)     PAEDIATRIC_RBM as ""Paediatric RBM"",#(lf)     PAEDIATRIC_HOSPITAL_REP as ""Paediatric Hospital Rep"",#(lf)     PAEDIATRIC_COMMUNITY_REP  as ""Paediatric Community Rep"",#(lf)     METABOLIC_NBM as ""Metabolic NBM"",#(lf)     METABOLIC_RBM as ""Metabolic RBM"",#(lf)     METABOLIC_REP as ""Metabolic REP"",#(lf)     IRELAND_COMMUNITY_RBM as ""IRELAND COMMUNITY RBM"",#(lf)     IRELAND_COMMUNITY_REP as ""IRELAND COMMUNITY REP"",#(lf)     IRELAND_HOSPITAL_RBM as ""IRELAND HOSPITAL RBM"",#(lf)     IRELAND_HOSPITAL_REP as ""IRELAND HOSPITAL REP"",#(lf)     IRELAND_PAEDIATRIC_REP as ""IRELAND PAEDIATRIC REP"",#(lf)     HDM_RBM as ""HDM RBM"",#(lf)     HDM_REP AS ""HDM_REP"",#(lf)     GEO_CCG_ID,#(lf)     GEO_COUNTRY_ID,#(lf)     GEO_TERRITORY_ID,#(lf)     GEO_CONTRACT_R_ID,#(lf)     ICS,#(lf)     ONS_RBM_SNU2023 as ""ONS RBM 2023"",#(lf)     ONS_REP_SNU2023 as ""ONS REP 2023"",#(lf)     DISPENSING_DOCTOR_REP_SNU2023 as ""Dispensing Doctor REP 2023"",#(lf)     PAEDIATRIC_RBM_SNU2023 as ""Paediatric RBM 2023"",#(lf)     PAEDIATRIC_REP_SNU2023 as ""Paediatric REP 2023"",#(lf)     ENTERAL_RBM_SNU2023 as ""Enteral RBM 2023"",#(lf)     ENTERAL_REP_SNU2023 as ""Enteral REP 2023"",#(lf)     ADULT_HDM_RBM_SNU2023 as ""Adult HDM RBM 2023"",#(lf)     ADULT_HDM_SNU2023 as ""Adult HDM 2023"",#(lf)     METABOLIC_RBM_SNU2023 as ""Metabolic RBM 2023"",#(lf)     METABOLIC_REP_SNU2023 as ""Metabolic REP 2023"",#(lf)     PAEDIATRIC_HDM_RBM_SNU2023 as ""Paediatric HDM RBM 2023"",#(lf)     PRE_TERM_REP_SNU2023 as ""Pre Term REP 2023"",#(lf)     IRE_PAED_RBM_SNU2023 as ""IRELAND PAEDIATRIC RBM 2023"",#(lf)     IRE_PAED_COMBINED_SNU2023 as ""IRELAND PAEDIATRIC COMBINED 2023"",#(lf)     COMMUNITY_GUIDELINE_NAME as ""Guideline Name"",#(lf)     GUIDELINE_ONS_SEGMENT as ""ONS Guideline"",#(lf)     GUIDELINE_AAF_SEGMENT as ""AAF Guideline"",#(lf)     GUIDELINE_EHF_SEGMENT as ""EHF Guideline"",#(lf)     /*COMPETITOR_CAM*/ null as ""Competitor CAM""#(lf)#(lf)FROM#(lf) PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_GEO_TERRITORY", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

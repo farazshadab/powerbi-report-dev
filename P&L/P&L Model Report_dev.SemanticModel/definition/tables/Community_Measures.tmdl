@@ -1,0 +1,206 @@
+table Community_Measures
+	lineageTag: 19f4037c-36ce-4987-b8c8-73820ed00b9e
+
+	measure Rebate_Community = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Final = CALCULATE(SUM(MDS_REBATES[ANNUAL_VALUE]),
+			                        FILTER(MDS_REBATES, MDS_REBATES[CATEGORY] = "Community")) 
+			VAR Main_Value=  if(Final = BLANK(),-0,-Final)
+			Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: 3d0bd914-c7c8-4e13-92fa-ed59ec54ff57
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Community_Sponsrship = 0
+		lineageTag: 5aa41f58-10e1-4a82-8056-1093c45fa8f0
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure 'customer servc cost community' = 0
+		formatString: 0
+		lineageTag: f53a08e7-3b0a-4096-a1e2-dd8489c51c96
+
+	measure Nurses_Community = 0
+		lineageTag: e9af177f-4d5d-44e9-a524-fe9ea80a7034
+
+		formatStringDefinition =
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Volume_Community =
+			CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),
+			                        'P&L_Query'[SALES_CHANNEL_ID] = 3,'P&L_Query'[MEASURE_NAME]="VOLUMES_IN_UNITS")
+		formatString: #,0
+		lineageTag: f9ceb66c-107e-4f2e-a5d7-9f8d1f5cda80
+
+	measure Invoiced_Community =
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = CALCULATE(SUMX('P&L_Query','P&L_Query'[MEASURE_VALUE]*'P&L_Query'[Percentage]),
+			                        'P&L_Query'[SALES_CHANNEL_ID] = 3,'P&L_Query'[MEASURE_NAME]="INVOICED_SALES", DIM_PRODUCT_MANUFACTURER[Manufacturer] = "NUTRICIA", DIM_PRODUCT[Flagged data] = "Yes")
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+		lineageTag: a8fe582e-7626-4ac1-8a9b-6be324aaec2b
+
+		formatStringDefinition =
+				--"\$#,0;(\$#,0);\$#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure FP10_Community =
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main = CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),
+			            'P&L_Query'[SALES_CHANNEL_ID] = 3,'P&L_Query'[MEASURE_NAME]="FP10_PRICE")
+			Var Main_Value = if(Main = BLANK(),0, Main)
+			Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			   RETURN
+			        Convereted_Currency
+		lineageTag: 709592d7-744e-4d9c-a0c3-a335de459cb6
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Discount_FP10_Community = [Invoiced_Community]-[FP10_Community]
+		lineageTag: 397afe8a-7840-418a-80d4-1f593f8aea67
+
+		formatStringDefinition =
+				--""£"#,0.00;-"£"#,0.00;"£"#,0.00"
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure COGs_Community =
+			
+			
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			/*Var Main_Value = CALCULATE(SUM(Cogs_Main[Cogs]),Cogs_Main[SALES_CHANNEL_ID] = 3)   */
+			         //VAR Main_Value =CALCULATE([Cogs_Value_Comm_Measure], 'P&L_Pivot'[SOURCE] = "Community",'P&L_Pivot'[SALES_CHANNEL_ID]=3)
+			         VAR Main_Value =CALCULATE(SUMX('P&L_Pivot','P&L_Pivot'[Percentage_]*[Cogs_Value_Comm_Measure]), 'P&L_Pivot'[SOURCE] = "Community",'P&L_Pivot'[SALES_CHANNEL_ID]=3,DIM_PRODUCT_MANUFACTURER[Manufacturer] = "NUTRICIA", DIM_PRODUCT[Flagged data] = "Yes")
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+		lineageTag: fd4f1b54-ba4f-4209-8677-beb0a52a021e
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Margin_Community = [NetSales_Community]-[COGs_Community]
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: e30080c6-2bbf-45ae-b437-a0e269268b49
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Margin(%)_Community = ```
+			
+			 var Div= DIVIDE([Margin_Community],[NetSales_Community])
+			RETURN
+			IFERROR(Div, 0)
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 60084692-060c-4f4b-8057-fee8fcf8c5ed
+
+	measure Distribution_Community = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value =  [COGs_Community]*0.141            
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: 49624032-1f77-42b0-bf47-eb679e120383
+
+		formatStringDefinition =
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure GrossProfit_Community = ```
+			
+			[NetSales_Community]+[COGs_Community]+[Distribution_Community]             
+			
+			```
+		lineageTag: abddfc80-45dd-4375-9a99-009634e077fc
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure GrossProfit(%)_Community = [GrossProfit_Community]/[NetSales_Community]
+		formatString: 0%;-0%;0%
+		lineageTag: 95d7a888-9730-44c2-97ed-05f79b037891
+
+	measure Contribution_Community = ```
+			
+			 var Gross= [GrossProfit_Community]
+			 var Lt= [Community_Sponsrship] + [Nurses_Community] + [customer servc cost community] + [Others_Communuty]
+			  
+			 RETURN
+			Gross+Lt             
+			
+			```
+		lineageTag: b432dbc0-6593-4287-ac0c-93d5a577f568
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Contribution(%)_Community = [Contribution_Community]/[NetSales_Community]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 70219643-3848-47e0-a4a0-04ca16268bbc
+
+	measure NetSales_Community = ([Invoiced_Community]+Community_Measures[Rebate_Community])*0.915
+		lineageTag: 0657ff28-5641-466f-a88a-2970b2878ec5
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Others_Communuty = 0
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 9265aba0-db46-40c8-bcca-cc06fcf97c07
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Disc%_Community = [Discount_FP10_Community]/[FP10_Community]
+		formatString: 0.00
+		lineageTag: ef5284f1-9f8b-4a9e-8f4a-c03b3f44b6d2
+
+	measure Community_Volume = CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),'P&L_Query'[MEASURE_NAME] = "VOLUMES_IN_UNITS",'P&L_Query'[SOURCE] = "Community",DIM_PRODUCT_MANUFACTURER[Manufacturer] = "NUTRICIA",Product_classification[Classification] <> "")
+		lineageTag: f75f348b-0948-4bef-bb3c-3429ed6cdce3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Community_Volume% = [Community_Volume]/CALCULATE([Community_Volume],ALLSELECTED('P&L_Query'))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 388442ac-8fae-4077-829a-02376bbe8517
+
+	measure Community_COGs% =
+			
+			
+			(CALCULATE([Community_Volume],FILTER(DIM_PRODUCT,DIM_PRODUCT[Classification] IN {"""Calogen""", """Core ONS"""}))/CALCULATE([Community_Volume],ALLSELECTED('P&L_Query')))*(-10177428.621929/31473740.45)+
+			(CALCULATE([Community_Volume],FILTER(DIM_PRODUCT,DIM_PRODUCT[Classification] IN {"""Paeds - HEIF""", """Paeds - sip"""}))/CALCULATE([Community_Volume],ALLSELECTED('P&L_Query')))*(-1982058.02354815/14600081.01)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 21459f50-be0c-4b86-bec9-86d05bd97d57
+
+	partition Community_Measures = m
+		mode: import
+		queryGroup: Measures
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

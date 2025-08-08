@@ -1,0 +1,217 @@
+table Patients_Pivot
+	lineageTag: b9b5d26d-a0a0-41e5-8d4c-c3e594cf2427
+
+	column SOURCE
+		dataType: string
+		lineageTag: 8bd71838-cd90-4dbc-96e0-1c7178859a93
+		summarizeBy: none
+		sourceColumn: SOURCE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_ID
+		dataType: double
+		lineageTag: 73dd2c00-1a11-4824-bf4e-9d1cc3219c74
+		summarizeBy: count
+		sourceColumn: CONTRACT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTRACT_R_ID
+		dataType: double
+		lineageTag: 0c7097c6-c1eb-4f8c-b585-f692e505d768
+		summarizeBy: none
+		sourceColumn: CONTRACT_R_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CURO_SUB_CONTRACT_ID
+		dataType: double
+		lineageTag: f1cb5fe1-39a4-4090-93d8-fe96dd666b11
+		summarizeBy: count
+		sourceColumn: CURO_SUB_CONTRACT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SALES_CHANNEL_ID
+		dataType: string
+		lineageTag: 35252250-d667-4a6e-817c-3dcbf6164395
+		summarizeBy: none
+		sourceColumn: SALES_CHANNEL_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_ID
+		dataType: string
+		lineageTag: ece6aabd-90df-491c-8c25-d192622ef09c
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PUMP_DATE
+		dataType: string
+		lineageTag: 5905bbd6-0ba0-446e-a3d5-94be940f6807
+		summarizeBy: none
+		sourceColumn: PUMP_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column NUM_OF_ACTIVE_PATIENT
+		dataType: double
+		lineageTag: 4083a8a2-d759-42fe-8d6b-790007056d06
+		summarizeBy: sum
+		sourceColumn: NUM_OF_ACTIVE_PATIENT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUM_OF_STARTED_PATIENT
+		dataType: double
+		lineageTag: a17cdf82-8031-4062-b054-8bc0f5617a1a
+		summarizeBy: sum
+		sourceColumn: NUM_OF_STARTED_PATIENT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUM_OF_STOPPED_PATIENT
+		dataType: double
+		lineageTag: 599435d6-c6ae-462f-957f-99fab3dea9a8
+		summarizeBy: sum
+		sourceColumn: NUM_OF_STOPPED_PATIENT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Patients_Pivot = m
+		mode: import
+		source = ```
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Implementation="2.0", Role="PRD_SNS_UKI_USER"]){[Name="PRD_SNS_UKI"]}[Data], 
+				    "
+				With MAX_MTH AS
+				(
+				SELECT
+				TO_NUMBER(TO_VARCHAR(LAST_DAY(TO_DATE(MAX('202503')|| '01','YYYYMMDD')),'YYYYMMDD')) AS STARTDATE,
+				TO_NUMBER(TO_VARCHAR(ADD_MONTHS(TO_DATE(MAX('202503')|| '01','YYYYMMDD'),-11),'YYYYMMDD')) AS ENDDATE,
+				LAST_DAY(TO_DATE(MAX('202503')|| '01','YYYYMMDD'))::TIMESTAMP_TZ AS MONTHEND_TZ,
+				DATEADD(DAY,-1,LAST_DAY(TO_DATE(MAX('202503')|| '01','YYYYMMDD')))::TIMESTAMP_TZ AS MONTHEND_TZ1,
+				TO_DATE(MAX('202503')|| '01','YYYYMMDD')::TIMESTAMP_TZ AS MONTHSTART_TZ
+				
+				-- SELECT 
+				-- TO_NUMBER(TO_VARCHAR(LAST_DAY(TO_DATE(MAX(MONTH_ID)|| '01','YYYYMMDD')),'YYYYMMDD')) AS STARTDATE,
+				-- TO_NUMBER(TO_VARCHAR(ADD_MONTHS(TO_DATE(MAX(MONTH_ID)|| '01','YYYYMMDD'),-11),'YYYYMMDD')) AS ENDDATE,
+				-- LAST_DAY(TO_DATE(MAX(MONTH_ID)|| '01','YYYYMMDD'))::TIMESTAMP_TZ AS MONTHEND_TZ,
+				-- DATEADD(DAY,-1,LAST_DAY(TO_DATE(MAX(MONTH_ID)|| '01','YYYYMMDD')))::TIMESTAMP_TZ AS MONTHEND_TZ1,
+				-- TO_DATE(MAX(MONTH_ID)|| '01','YYYYMMDD')::TIMESTAMP_TZ AS MONTHSTART_TZ
+				-- FROM SNS_UKI_DSP_SNU.FACT_IQVIA_RSA
+				
+				)
+				,DIM_CURO_ACTIVE_PATIENT AS (
+				SELECT 
+				    CASE WHEN TO_CHAR(DWH_START_DATE,'YYYYMMDD')='19010101' THEN  PMS_START_DATE ELSE  DWH_START_DATE END AS DWH_START_DATE,
+				    DWH_END_DATE,
+				    CURRENT_PATIENT_STATUS,
+				    PMS_PATIENT_STATUS,
+				    CURO_SUB_CONTRACT_ID,
+				    DWH_CURRENT_FLAG,
+				    PMS_ACCOUNT_ID,
+				    IFNULL(PMS_PATIENT_CATEGORY,'0') AS PMS_PATIENT_CATEGORY,
+				    FROM SNS_UKI_DSP_SNU.DIM_CURO_PATIENT_MASKED CP
+				LEFT JOIN (
+				    SELECT 
+				    DISTINCT PATIENT_ID, 
+				    FIRST_VALUE(REGIMEN_STATUS) OVER (PARTITION BY PATIENT_ID ORDER BY DELIVERY_DATE_ID DESC NULLS LAST) AS REGIMEN_STATUS
+				FROM SNS_UKI_DSP_SNU.FACT_CURO_PATIENT_REGIMEN
+				  WHERE UPPER(REGIMEN_STATUS) = 'ACTIVE') AS RS 
+				ON CP.PATIENT_ID = RS.PATIENT_ID
+				
+				)
+				
+				
+				SELECT
+				 SOURCE
+				,NVL(CONTRACT_ID,0) AS CONTRACT_ID
+				,NVL(CONTRACT_R_ID,0) AS CONTRACT_R_ID
+				,NVL(CURO_SUB_CONTRACT_ID,0) AS CURO_SUB_CONTRACT_ID
+				,SALES_CHANNEL_ID
+				,PRODUCT_ID
+				,PUMP_DATE
+				,NUM_OF_ACTIVE_PATIENT
+				,NUM_OF_STARTED_PATIENT
+				,NUM_OF_STOPPED_PATIENT
+				FROM (
+				    SELECT  'PATIENT NUMBERS' AS SOURCE,
+				    B.CONTRACT_ID,
+				    B.CONTRACT_R_ID,
+				    A.CURO_SUB_CONTRACT_ID,
+				    NULL AS SALES_CHANNEL_ID,
+				    NULL AS PRODUCT_ID,
+				    NULL AS PUMP_DATE,
+				    'NUM_OF_ACTIVE_PATIENT' AS MEASURE_NAME,
+				    COUNT(DISTINCT(PMS_ACCOUNT_ID)) AS MEASURE_VALUE
+				    FROM DIM_CURO_ACTIVE_PATIENT A
+				    LEFT JOIN SNS_UKI_DSP_SNU.DIM_MEDICAL_CONTRACT B ON A.CURO_SUB_CONTRACT_ID = B.CURO_SUB_CONTRACT_ID
+				    WHERE UPPER(PMS_PATIENT_STATUS)='ACTIVE'
+				    AND UPPER(PMS_PATIENT_CATEGORY) NOT IN ('PUMP ONLY')
+				    AND (SELECT MONTHEND_TZ FROM MAX_MTH) BETWEEN DWH_START_DATE AND DWH_END_DATE
+				    GROUP BY CONTRACT_ID,B.CONTRACT_R_ID,A.CURO_SUB_CONTRACT_ID
+				    
+				    UNION
+				    
+				    SELECT  'PATIENT NUMBERS' AS SOURCE,
+				    B.CONTRACT_ID,
+				    B.CONTRACT_R_ID,
+				    A.CURO_SUB_CONTRACT_ID,
+				    NULL AS SALES_CHANNEL_ID,
+				    NULL AS PRODUCT_ID,
+				    NULL AS PUMP_DATE,
+				    'NUM_OF_STARTED_PATIENT' AS MEASURE_NAME,
+				    COUNT(DISTINCT(PMS_ACCOUNT_ID)) AS MEASURE_VALUE
+				    FROM SNS_UKI_DSP_SNU.DIM_CURO_PATIENT A
+				    LEFT JOIN SNS_UKI_DSP_SNU.DIM_MEDICAL_CONTRACT B ON A.CURO_SUB_CONTRACT_ID = B.CURO_SUB_CONTRACT_ID
+				    WHERE UPPER(FAX) = 'PATIENT ACTIVATED' 
+				    AND A.DWH_CURRENT_FLAG = 1 
+				    AND A.CURO_SUB_CONTRACT_ID <> 0 
+				    AND PMS_START_DATE BETWEEN (SELECT MONTHSTART_TZ FROM MAX_MTH) AND (SELECT MONTHEND_TZ FROM MAX_MTH) 
+				    GROUP BY CONTRACT_ID,B.CONTRACT_R_ID,A.CURO_SUB_CONTRACT_ID
+				    
+				    UNION
+				    
+				    SELECT  'PATIENT NUMBERS' AS SOURCE,
+				    B.CONTRACT_ID,
+				    B.CONTRACT_R_ID,
+				    A.CURO_SUB_CONTRACT_ID,
+				    NULL AS SALES_CHANNEL_ID,
+				    NULL AS PRODUCT_ID,
+				    NULL AS PUMP_DATE,
+				    'NUM_OF_STOPPED_PATIENT' AS MEASURE_NAME,
+				    COUNT(DISTINCT(PMS_ACCOUNT_ID)) AS MEASURE_VALUE
+				    FROM SNS_UKI_DSP_SNU.DIM_CURO_PATIENT A
+				    LEFT JOIN SNS_UKI_DSP_SNU.DIM_MEDICAL_CONTRACT B ON A.CURO_SUB_CONTRACT_ID = B.CURO_SUB_CONTRACT_ID
+				    WHERE UPPER(FAX) = 'PATIENT ACTIVATED' 
+				    AND UPPER(PMS_PATIENT_STATUS) IN ('DECEASED', 'OFF SCHEME')
+				    AND PMS_STOP_DATE BETWEEN (SELECT MONTHSTART_TZ FROM MAX_MTH) AND (SELECT MONTHEND_TZ FROM MAX_MTH) 
+				    GROUP BY CONTRACT_ID,B.CONTRACT_R_ID,A.CURO_SUB_CONTRACT_ID
+				    )
+				    PIVOT(SUM(MEASURE_VALUE) FOR MEASURE_NAME IN ('NUM_OF_ACTIVE_PATIENT','NUM_OF_STARTED_PATIENT','NUM_OF_STOPPED_PATIENT') ) AS P(SOURCE,CONTRACT_ID,CONTRACT_R_ID,CURO_SUB_CONTRACT_ID,SALES_CHANNEL_ID,PRODUCT_ID,PUMP_DATE,NUM_OF_ACTIVE_PATIENT,NUM_OF_STARTED_PATIENT,NUM_OF_STOPPED_PATIENT)
+				    
+				    ", null, [EnableFolding=true])
+				in
+				    Source
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

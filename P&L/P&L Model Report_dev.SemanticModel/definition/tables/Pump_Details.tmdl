@@ -1,0 +1,351 @@
+table Pump_Details
+	lineageTag: e16ee0cf-8679-414a-9d88-a142c11cb812
+
+	column SOURCE
+		dataType: string
+		lineageTag: 7a7b687e-6cee-44b0-bf82-330d61c85708
+		summarizeBy: none
+		sourceColumn: SOURCE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_ID
+		dataType: double
+		lineageTag: 43625907-5b95-4ba0-b9cc-7eb1f7919618
+		summarizeBy: count
+		sourceColumn: CONTRACT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTRACT_R_ID
+		dataType: double
+		formatString: 0
+		lineageTag: d35f1a32-8c93-417f-b907-fedbb45464dc
+		summarizeBy: none
+		sourceColumn: CONTRACT_R_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column CURO_SUB_CONTRACT_ID
+		dataType: double
+		lineageTag: 0395f7bf-8321-43b0-bfeb-63439c5bd852
+		summarizeBy: count
+		sourceColumn: CURO_SUB_CONTRACT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SALES_CHANNEL_ID
+		dataType: string
+		lineageTag: d93dc1b7-5dd9-4033-9cc2-a1c0620acf9e
+		summarizeBy: none
+		sourceColumn: SALES_CHANNEL_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_ID
+		dataType: int64
+		lineageTag: 340ee634-1c79-480d-b4c3-ec0d580b3b08
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRODUCT_CODE
+		dataType: string
+		lineageTag: 3d1cc6ce-7516-4b64-b8e4-d5fee3dd242a
+		summarizeBy: none
+		sourceColumn: PRODUCT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PUMP_DATE
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 295194e6-c22f-470d-879f-9f9cdbccbbae
+		summarizeBy: none
+		sourceColumn: PUMP_DATE
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column PRODUCT_DESCRIPTION
+		dataType: string
+		lineageTag: b6c297ea-604e-4e8b-863f-eef1c25cca46
+		summarizeBy: none
+		sourceColumn: PRODUCT_DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column INCLUDE_EXCLUDE
+		dataType: string
+		lineageTag: f5017004-c41a-4ed6-aa8e-ed83ca34a205
+		summarizeBy: none
+		sourceColumn: INCLUDE_EXCLUDE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PUMP_MODEL
+		dataType: string
+		lineageTag: 941b07cb-d001-48c3-9201-17bbce412bbe
+		summarizeBy: none
+		sourceColumn: PUMP_MODEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column MEASURE_NAME
+		dataType: string
+		lineageTag: 1642f3d1-9172-4baf-beb8-8de23665648a
+		summarizeBy: none
+		sourceColumn: MEASURE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column MEASURE_VALUE
+		dataType: double
+		formatString: 0
+		lineageTag: 16cbf421-b3f4-494c-ba5c-da8152fb55d4
+		summarizeBy: sum
+		sourceColumn: MEASURE_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column GEOGRAPHY_ID
+		dataType: double
+		lineageTag: 1c1f6e62-d68e-44dd-8efe-827b97d74e7f
+		summarizeBy: none
+		sourceColumn: GEOGRAPHY_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Pump_Details = m
+		mode: import
+		source = ```
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Role="PRD_SNS_UKI_USER", Implementation="2.0"]){[Name="PRD_SNS_UKI"]}[Data], 
+				    
+				    "SELECT 
+				FT.SOURCE,
+				FT.CURO_SUB_CONTRACT_ID,
+				FT.CONTRACT_ID,
+				FT.CONTRACT_R_ID,
+				FT.SALES_CHANNEL_ID,
+				FT.PRODUCT_ID,
+				PRD.PRODUCT_CODE,
+				FT.GEOGRAPHY_ID,
+				FT.PUMP_DATE,
+				FT.PRODUCT_DESCRIPTION,
+				FT.INCLUDE_EXCLUDE,
+				FT.PUMP_MODEL,
+				FT.MEASURE_NAME,
+				FT.MEASURE_VALUE
+				
+				FROM (
+				With MAX_MTH AS
+				(
+				SELECT
+				TO_NUMBER(TO_VARCHAR(LAST_DAY(TO_DATE(MAX('202503')|| '01','YYYYMMDD')),'YYYYMMDD')) AS STARTDATE,
+				TO_NUMBER(TO_VARCHAR(ADD_MONTHS(TO_DATE(MAX('202503')|| '01','YYYYMMDD'),-11),'YYYYMMDD')) AS ENDDATE,
+				LAST_DAY(TO_DATE(MAX('202503')|| '01','YYYYMMDD'))::TIMESTAMP_TZ AS MONTHEND_TZ,
+				DATEADD(DAY,-1,LAST_DAY(TO_DATE(MAX('202503')|| '01','YYYYMMDD')))::TIMESTAMP_TZ AS MONTHEND_TZ1,
+				TO_DATE(MAX('202503')|| '01','YYYYMMDD')::TIMESTAMP_TZ AS MONTHSTART_TZ
+				)
+				SELECT
+				SOURCE,
+				CONTRACT_ID,
+				CONTRACT_R_ID,
+				CURO_SUB_CONTRACT_ID,
+				SALES_CHANNEL_ID,
+				PRODUCT_ID,
+				GEOGRAPHY_ID,
+				PUMP_DATE,
+				PRODUCT_DESCRIPTION,
+				INCLUDE_EXCLUDE,
+				PUMP_MODEL,
+				MEASURE_NAME,
+				MEASURE_VALUE
+				FROM (
+				SELECT
+				'PATIENT_PUMP' as Source,
+				'2' AS SALES_CHANNEL_ID,
+				CURO_SUB_CONTRACT_ID,
+				PRODUCT_ID,
+				GEOGRAPHY_ID,
+				CONTRACT_ID,
+				CONTRACT_R_ID,
+				PUMP_DATE,
+				PRODUCT_DESCRIPTION,
+				INCLUDE_EXCLUDE,
+				PUMP_MODEL,
+				SUM(PUMP_COUNT) as PUMP_COUNT,
+				SUM(PUMP_IN_SERVICE_COUNT) as PUMP_IN_SERVICE_COUNT ,
+				SUM(PUMP_NOT_IN_SERVICE_COUNT) AS PUMP_NOT_IN_SERVICE_COUNT,
+				FROM (
+				SELECT
+				T.PRODUCT_ID,
+				T.GEOGRAPHY_ID,
+				PT.CURO_SUB_CONTRACT_ID,
+				MC.CONTRACT_ID,
+				MCR.CONTRACT_R_ID,
+				P.ACQUISITION_DATE as PUMP_DATE,
+				P.PRODUCT_DESCRIPTION,
+				CASE 
+				    WHEN P.ACQUISITION_DATE < ADD_MONTHS(TO_DATE('20241031','YYYYMMDD'),-60) THEN 'EXCLUDE'
+				    ELSE 'INCLUDE'
+				END AS INCLUDE_EXCLUDE,
+				CASE 
+				    WHEN P.PRODUCT_DESCRIPTION='FLOCARE 800 ENTERAL PUMP' THEN 'Obsolete'
+				    WHEN P.PRODUCT_DESCRIPTION='FLOCARE INFINITY III PUMP' THEN 'Infinity 3'
+				    WHEN P.PRODUCT_DESCRIPTION='FLOCARE INFINITY PUMP' THEN 'Infinity 2'
+				    WHEN P.PRODUCT_DESCRIPTION='FLOCARE INFINITY PUMP (125D)' THEN 'Obsolete'
+				    WHEN P.PRODUCT_DESCRIPTION='FLOCARE INFINITY PLUS PUMP' THEN 'Infinity 2'
+				    WHEN P.PRODUCT_DESCRIPTION='INFINITY PAGER' THEN 'Infinity 2'
+				    WHEN P.PRODUCT_DESCRIPTION='APPLIX SMART PUMP' THEN 'Infinity 2'
+				    ELSE 'Obsolete'
+				END AS PUMP_MODEL,
+				T.PUMP_COUNT,
+				CASE WHEN P.NEXT_SERVICE_DATE >= (SELECT MONTHEND_TZ from MAX_MTH)
+				     THEN T.PUMP_COUNT END PUMP_IN_SERVICE_COUNT,
+				CASE WHEN P.NEXT_SERVICE_DATE < (SELECT MONTHEND_TZ from MAX_MTH) OR P.NEXT_SERVICE_DATE IS NULL
+				     THEN T.PUMP_COUNT END PUMP_NOT_IN_SERVICE_COUNT
+				-- PUMP_IN_SERVICE_COUNT,
+				-- PUMP_NOT_IN_SERVICE_COUNT
+				FROM SNS_UKI_DSP_SNU.FACT_PUMP_LOC_TRACK T 
+				LEFT JOIN SNS_UKI_DSP_SNU.DIM_CURO_PATIENT PT ON PT.PATIENT_ID=T.PATIENT_ID
+				LEFT JOIN SNS_UKI_DSP_SNU.DIM_PUMP P ON T.PUMP_ID=P.PUMP_ID
+				LEFT join PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_MEDICAL_CONTRACT MC on MC.CURO_SUB_CONTRACT_ID=PT.CURO_SUB_CONTRACT_ID
+				LEFT JOIN PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_MEDICAL_CONTRACT_R MCR ON MCR.CONTRACT_R_ID=MC.CONTRACT_R_ID
+				WHERE UPPER(T.PUMP_LOCATION) = 'PATIENT'
+				AND T.DATE_FROM <= (SELECT MONTHEND_TZ from MAX_MTH)
+				AND T.DATE_TO >= (SELECT MONTHEND_TZ from MAX_MTH)
+				-- AND PT.CURO_SUB_CONTRACT_ID<>0
+				)
+				GROUP BY 
+				SOURCE,
+				CURO_SUB_CONTRACT_ID,           
+				SALES_CHANNEL_ID,
+				PRODUCT_ID,
+				GEOGRAPHY_ID,
+				CONTRACT_ID,
+				CONTRACT_R_ID,
+				PUMP_DATE,
+				PRODUCT_DESCRIPTION,
+				INCLUDE_EXCLUDE,
+				PUMP_MODEL
+				)UNPIVOT(MEASURE_VALUE FOR MEASURE_NAME IN (PUMP_COUNT,PUMP_IN_SERVICE_COUNT,PUMP_NOT_IN_SERVICE_COUNT)) 
+				
+				UNION ALL
+				
+				SELECT
+				SOURCE,
+				CONTRACT_ID,
+				CONTRACT_R_ID,
+				CURO_SUB_CONTRACT_ID,
+				SALES_CHANNEL_ID,
+				PRODUCT_ID,
+				GEOGRAPHY_ID,
+				PUMP_DATE,
+				PRODUCT_DESCRIPTION,
+				INCLUDE_EXCLUDE,
+				PUMP_MODEL,
+				MEASURE_NAME,
+				MEASURE_VALUE
+				FROM (
+				SELECT
+				'HOSPITAL_PUMP' as SOURCE,
+				'1' as SALES_CHANNEL_ID,
+				CURO_SUB_CONTRACT_ID,
+				PRODUCT_ID,
+				GEOGRAPHY_ID,
+				CONTRACT_ID,
+				CONTRACT_R_ID,
+				PUMP_DATE,
+				PRODUCT_DESCRIPTION,
+				INCLUDE_EXCLUDE,
+				PUMP_MODEL,
+				SUM(PUMP_COUNT) as PUMP_COUNT,
+				SUM(PUMP_IN_SERVICE_COUNT) as PUMP_IN_SERVICE_COUNT ,
+				SUM(PUMP_NOT_IN_SERVICE_COUNT) AS PUMP_NOT_IN_SERVICE_COUNT
+				FROM (
+				SELECT
+				T.PRODUCT_ID,
+				T.GEOGRAPHY_ID,
+				T.PATIENT_ID,
+				MC.CURO_SUB_CONTRACT_ID,
+				T.CONTRACT_ID,
+				MC.CONTRACT_R_ID,
+				P.ACQUISITION_DATE AS PUMP_DATE,
+				P.PRODUCT_DESCRIPTION,
+				CASE 
+				    WHEN P.ACQUISITION_DATE < ADD_MONTHS(TO_DATE('20241031','YYYYMMDD'),-60) THEN 'EXCLUDE'
+				    ELSE 'INCLUDE'
+				END AS INCLUDE_EXCLUDE,
+				CASE 
+				    WHEN P.PRODUCT_DESCRIPTION='FLOCARE 800 ENTERAL PUMP' THEN 'Obsolete'
+				    WHEN P.PRODUCT_DESCRIPTION='FLOCARE INFINITY III PUMP' THEN 'Infinity 3'
+				    WHEN P.PRODUCT_DESCRIPTION='FLOCARE INFINITY PUMP' THEN 'Infinity 2'
+				    WHEN P.PRODUCT_DESCRIPTION='FLOCARE INFINITY PUMP (125D)' THEN 'Obsolete'
+				    WHEN P.PRODUCT_DESCRIPTION='FLOCARE INFINITY PLUS PUMP' THEN 'Infinity 2'
+				    WHEN P.PRODUCT_DESCRIPTION='INFINITY PAGER' THEN 'Infinity 2'
+				    WHEN P.PRODUCT_DESCRIPTION='APPLIX SMART PUMP' THEN 'Infinity 2'
+				    ELSE 'Obsolete'
+				END AS PUMP_MODEL,
+				T.PUMP_COUNT,
+				CASE WHEN P.NEXT_SERVICE_DATE >=(SELECT MONTHEND_TZ from MAX_MTH)
+				     THEN T.PUMP_COUNT END PUMP_IN_SERVICE_COUNT,
+				CASE WHEN P.NEXT_SERVICE_DATE < (SELECT MONTHEND_TZ from MAX_MTH) OR P.NEXT_SERVICE_DATE IS NULL
+				     THEN T.PUMP_COUNT END PUMP_NOT_IN_SERVICE_COUNT
+				-- PUMP_IN_SERVICE_COUNT,
+				-- PUMP_NOT_IN_SERVICE_COUNT
+				FROM
+				SNS_UKI_DSP_SNU.FACT_PUMP_LOC_TRACK T 
+				LEFT JOIN SNS_UKI_DSP_SNU.DIM_CURO_PATIENT PT ON PT.PATIENT_ID=T.PATIENT_ID
+				LEFT JOIN SNS_UKI_DSP_SNU.DIM_PUMP P ON T.PUMP_ID=P.PUMP_ID
+				LEFT join PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_MEDICAL_CONTRACT MC on MC.CONTRACT_ID=T.CONTRACT_ID
+				WHERE T.PUMP_LOCATION  IN ('WARD PUMP','POOL PUMP')
+				AND T.DATE_FROM <= (SELECT MONTHEND_TZ from MAX_MTH)
+				AND T.DATE_TO >= (SELECT MONTHEND_TZ from MAX_MTH)
+				)
+				GROUP BY
+				SOURCE,
+				SALES_CHANNEL_ID,
+				CURO_SUB_CONTRACT_ID,
+				PRODUCT_ID,
+				GEOGRAPHY_ID,
+				CONTRACT_ID,
+				CONTRACT_R_ID,
+				PUMP_DATE,
+				PRODUCT_DESCRIPTION,
+				INCLUDE_EXCLUDE,
+				PUMP_MODEL
+				)UNPIVOT(MEASURE_VALUE FOR MEASURE_NAME IN (PUMP_COUNT,PUMP_IN_SERVICE_COUNT,PUMP_NOT_IN_SERVICE_COUNT))
+				) FT 
+				LEFT JOIN PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT PRD ON PRD.PRODUCT_ID=FT.PRODUCT_ID",
+				    
+				    null, [EnableFolding=true])
+				in
+				    Source
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

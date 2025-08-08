@@ -1,0 +1,243 @@
+table DIM_PRODUCT
+	lineageTag: a8880680-4afb-4c25-87b3-cb200a760e6f
+
+	column PRODUCT_ID
+		dataType: int64
+		lineageTag: bcfbf7be-906d-4f80-9737-bf93c146b8d9
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PROD_HIER_LOCAL_6_ID
+		dataType: double
+		lineageTag: 1ced42d3-e247-45ec-bdf2-9e061fafda8c
+		summarizeBy: count
+		sourceColumn: PROD_HIER_LOCAL_6_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PROD_MANUFACTURER_ID
+		dataType: double
+		lineageTag: 578e4f07-53c1-4ab7-9208-7d11d9cd28ef
+		summarizeBy: none
+		sourceColumn: PROD_MANUFACTURER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Valid_Code = if(DIM_PRODUCT[SKU]="","No",if(DIM_PRODUCT[SKU]="---","No",if(DIM_PRODUCT[SKU]="n/a","No","Yes")))
+		lineageTag: 8d341ed7-ef75-4463-bd7f-8258ee0c2e8e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classification = RELATED(Product_classification[Classification])
+		lineageTag: a0e82e56-bcdc-482b-9c16-cef6d30af7d1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Flagged Data' = ```
+			IF(DIM_PRODUCT[Classification] 
+			IN {
+			"Core ONS",
+			"Calogen",
+			"Paeds - HEIF",
+			"Paeds - sip",
+			"Adult Tube",
+			"Paeds - Tube",
+			"Dysphagia",
+			"Allergy",
+			"Other ONS",
+			"Low cost powders",
+			"SPECIALIST FG"},"Yes")
+			
+			```
+		lineageTag: 44b477ce-0b73-4e07-9716-4bbc9b4bffab
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column WEIGHTED_COGS_PER_UNIT
+		dataType: double
+		lineageTag: d6d3dbe3-e68a-4a3a-97b2-58986f6f2960
+		summarizeBy: sum
+		sourceColumn: WEIGHTED_COGS_PER_UNIT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Product_classification_from_MNF = RELATED(DIM_PRODUCT_MANUFACTURER[Nutricia_YES_NO])
+		lineageTag: 5c28d972-d80e-4c72-b5e6-e4896ae5c5f2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU
+		dataType: string
+		lineageTag: 3f0a5f5b-cc3f-4e84-8d84-d6fcbb910b71
+		summarizeBy: none
+		sourceColumn: SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_DESCRIPTION
+		dataType: string
+		lineageTag: 037e1021-31d6-4654-822c-3e730b40b6fd
+		summarizeBy: none
+		sourceColumn: PRODUCT_DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROD_HIER_LOCAL_6_NAME
+		dataType: string
+		lineageTag: fc0b46b8-b1f0-40bf-a209-7abed39cae3e
+		summarizeBy: none
+		sourceColumn: PROD_HIER_LOCAL_6_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROD_HIER_LOCAL_5_ID
+		dataType: double
+		lineageTag: 15bbb61e-f548-453a-94df-9400427768a1
+		summarizeBy: count
+		sourceColumn: PROD_HIER_LOCAL_5_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PROD_HIER_LOCAL_5_NAME
+		dataType: string
+		lineageTag: 4a49038a-80b9-4b79-89ec-97e502b93356
+		summarizeBy: none
+		sourceColumn: PROD_HIER_LOCAL_5_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROD_HIER_LOCAL_4_ID
+		dataType: double
+		lineageTag: 06443629-11d1-4d91-b708-e237d3d8e2e0
+		summarizeBy: count
+		sourceColumn: PROD_HIER_LOCAL_4_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PROD_HIER_LOCAL_4_NAME
+		dataType: string
+		lineageTag: b6dc469e-10c2-406c-b2f9-bda3d4011ed6
+		summarizeBy: none
+		sourceColumn: PROD_HIER_LOCAL_4_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROD_HIER_LOCAL_3_ID
+		dataType: double
+		lineageTag: 18376acf-7067-4915-ac9b-26b440a2778e
+		summarizeBy: count
+		sourceColumn: PROD_HIER_LOCAL_3_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PROD_HIER_LOCAL_3_NAME
+		dataType: string
+		lineageTag: f3b7d308-eeff-4b85-8384-72fee8286da5
+		summarizeBy: none
+		sourceColumn: PROD_HIER_LOCAL_3_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROD_HIER_LOCAL_2_ID
+		dataType: double
+		lineageTag: d9f9d221-f04a-4441-944d-2a8d8e266978
+		summarizeBy: count
+		sourceColumn: PROD_HIER_LOCAL_2_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PROD_HIER_LOCAL_2_NAME
+		dataType: string
+		lineageTag: e2f46871-fbab-4c8b-a90e-c5d38a529704
+		summarizeBy: none
+		sourceColumn: PROD_HIER_LOCAL_2_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROD_HIER_LOCAL_1_ID
+		dataType: double
+		lineageTag: 3877978a-ffb1-4ff8-8a16-0d712fc21897
+		summarizeBy: count
+		sourceColumn: PROD_HIER_LOCAL_1_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PROD_HIER_LOCAL_1_NAME
+		dataType: string
+		lineageTag: aec93bbd-2844-4988-b1bd-03cd7d6ba4d7
+		summarizeBy: none
+		sourceColumn: PROD_HIER_LOCAL_1_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_PRODUCT = m
+		mode: import
+		source = ```
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Role="PRD_SNS_UKI", Implementation="2.0"]){[Name="PRD_SNS_UKI"]}[Data], "
+				    
+				    SELECT
+				     f.PRODUCT_ID,
+				     f.PRODUCT_CODE,
+				     f.PRODUCT_DESCRIPTION,
+				     f.PROD_MANUFACTURER_ID,
+				     f.PROD_HIER_LOCAL_6_ID,
+				     e.PROD_HIER_LOCAL_6_NAME,
+				     e.PROD_HIER_LOCAL_5_ID, 
+				     d.PROD_HIER_LOCAL_5_NAME,
+				     d.PROD_HIER_LOCAL_4_ID,
+				     a.PROD_HIER_LOCAL_4_NAME,
+				     a.PROD_HIER_LOCAL_3_ID,
+				     b.PROD_HIER_LOCAL_3_NAME,
+				     b.PROD_HIER_LOCAL_2_ID,
+				     c.PROD_HIER_LOCAL_2_NAME,
+				     c.prod_hier_local_1_id,
+				     g.PROD_HIER_LOCAL_1_NAME 
+				    
+				FROM PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT f
+				      left join PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_6 e  on e.PROD_HIER_LOCAL_6_ID=f.PROD_HIER_LOCAL_6_ID
+				       left join PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_5 d on d.PROD_HIER_LOCAL_5_ID=e.PROD_HIER_LOCAL_5_ID
+				       left join PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_4 a on a.PROD_HIER_LOCAL_4_ID=d.PROD_HIER_LOCAL_4_ID
+				       left join  PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_3 b on a.PROD_HIER_LOCAL_3_ID=b.PROD_HIER_LOCAL_3_ID
+				       left join  PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_2 c on b.PROD_HIER_LOCAL_2_ID=c.PROD_HIER_LOCAL_2_ID 
+				left join  PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_1 g on c.PROD_HIER_LOCAL_1_ID=g.PROD_HIER_LOCAL_1_ID
+				    
+				    
+				    ", null, [EnableFolding=true]),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"PRODUCT_CODE", "SKU"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"PROD_HIER_LOCAL_6_ID"}, Cogs_Comm, {"SNU_PROD_HIER_LOCAL_6_ID"}, "Cogs_Community_Original", JoinKind.LeftOuter),
+				    #"Expanded Cogs_Community_Original" = Table.ExpandTableColumn(#"Merged Queries", "Cogs_Community_Original", {"WEIGHTED_COGS_PER_UNIT"}, {"WEIGHTED_COGS_PER_UNIT"})
+				in
+				    #"Expanded Cogs_Community_Original"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

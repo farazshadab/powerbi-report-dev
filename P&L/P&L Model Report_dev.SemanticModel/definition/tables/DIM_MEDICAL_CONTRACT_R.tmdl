@@ -1,0 +1,288 @@
+table DIM_MEDICAL_CONTRACT_R
+	lineageTag: 09f7b5ca-ae38-4d56-acd9-4c65c091f60e
+
+	column CONTRACT_R_ID
+		dataType: double
+		lineageTag: c8c36164-c1f5-410c-8cbf-835c2c2a37f1
+		summarizeBy: none
+		sourceColumn: CONTRACT_R_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTRACT_R_NAME
+		dataType: string
+		lineageTag: 7736cb25-a15f-4609-9282-75a58fa92bea
+		summarizeBy: none
+		sourceColumn: CONTRACT_R_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column MDS_CODE
+		dataType: string
+		lineageTag: 2bff9b08-262d-45a7-bbee-e3810b9cc420
+		summarizeBy: none
+		sourceColumn: MDS_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_R_CODE
+		dataType: string
+		lineageTag: 4cd29633-e5eb-4ba2-8b98-bb9d13aa3600
+		summarizeBy: none
+		sourceColumn: CONTRACT_R_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_TYPE
+		dataType: string
+		lineageTag: db9b2a30-2cd5-4207-99b0-c9b4a08ffe2f
+		summarizeBy: none
+		sourceColumn: CONTRACT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_STATUS
+		dataType: string
+		lineageTag: ab4b4dca-f1b8-4597-a844-023107172cad
+		summarizeBy: none
+		sourceColumn: CONTRACT_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_HOLDER
+		dataType: string
+		lineageTag: 46454287-0949-4392-91a5-916f14f7a533
+		summarizeBy: none
+		sourceColumn: CONTRACT_HOLDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_START_STATUS
+		dataType: string
+		lineageTag: 5dfad049-b731-494f-a53f-fab3040b2287
+		summarizeBy: none
+		sourceColumn: CONTRACT_START_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_START_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3377ef59-f954-4e86-92f9-5c5efaa6dd23
+		summarizeBy: none
+		sourceColumn: CONTRACT_START_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_END_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ce7234f2-9c32-489b-9d72-4503eaa90397
+		summarizeBy: none
+		sourceColumn: CONTRACT_END_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE_WIN_REWIN_EXTENSION
+		dataType: string
+		lineageTag: 56a9d577-99d0-4dcb-be95-550cf03cabeb
+		summarizeBy: none
+		sourceColumn: DATE_WIN_REWIN_EXTENSION
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROLLOVER_OPTION
+		dataType: string
+		lineageTag: cd394cf9-2a7f-4a91-a128-e612219dc067
+		summarizeBy: none
+		sourceColumn: ROLLOVER_OPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CURRENT_NURSE_FTE
+		dataType: double
+		lineageTag: f1847f9d-153f-4ccb-b8cf-5d6ff32adb64
+		summarizeBy: sum
+		sourceColumn: CURRENT_NURSE_FTE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CURRENT_TPA_PRICING
+		dataType: string
+		lineageTag: 3ad63bba-4550-4b2c-89bd-f4bc58ecabc4
+		summarizeBy: none
+		sourceColumn: CURRENT_TPA_PRICING
+
+		annotation SummarizationSetBy = Automatic
+
+	column FORECAST_TENDER_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f7d8e8d3-f9cd-448a-8f9b-abc3c3864e10
+		summarizeBy: none
+		sourceColumn: FORECAST_TENDER_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column FORECAST_CONTRACT_START_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bf5400a4-181c-4183-8fef-8cf2f4bde835
+		summarizeBy: none
+		sourceColumn: FORECAST_CONTRACT_START_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column FUTURE_CONTRACT_NURSE_FTE
+		dataType: double
+		lineageTag: f46a4d1b-77b6-44d5-9d97-5fe7f7eb3250
+		summarizeBy: sum
+		sourceColumn: FUTURE_CONTRACT_NURSE_FTE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FUTURE_CONTRACTED_FUNDING
+		dataType: double
+		lineageTag: 5e9c5ad5-ef36-4985-870a-2693f5aa0403
+		summarizeBy: sum
+		sourceColumn: FUTURE_CONTRACTED_FUNDING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TARGETING_STATUS
+		dataType: string
+		lineageTag: ae1a8e99-8701-47e1-b2ea-063109732fe2
+		summarizeBy: none
+		sourceColumn: TARGETING_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column WIN_PROBABILITY
+		dataType: string
+		lineageTag: fd0aa5b7-3f64-4fc6-a9ac-23ddbaf3160a
+		summarizeBy: none
+		sourceColumn: WIN_PROBABILITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CURRENT_PATIENT_NUMBERS
+		dataType: double
+		lineageTag: c110184f-4598-44ac-b442-a545aac5d736
+		summarizeBy: sum
+		sourceColumn: CURRENT_PATIENT_NUMBERS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FUTURE_CONTRACT_TPA_PRICING
+		dataType: string
+		lineageTag: 2bcd6f8b-0f9c-4c57-9cf7-c5b2221e5269
+		summarizeBy: none
+		sourceColumn: FUTURE_CONTRACT_TPA_PRICING
+
+		annotation SummarizationSetBy = Automatic
+
+	column FUTURE_CONTRACT_PUMP_NUMBERS
+		dataType: double
+		lineageTag: 87268840-8e07-44c3-a819-08ac4c01865a
+		summarizeBy: sum
+		sourceColumn: FUTURE_CONTRACT_PUMP_NUMBERS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FUTURE_COM_LINK_AND_GROWTH
+		dataType: string
+		lineageTag: 49ae2a9a-9344-4e1d-8586-a0536314bdca
+		summarizeBy: none
+		sourceColumn: FUTURE_COM_LINK_AND_GROWTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column COMMENTARY
+		dataType: string
+		lineageTag: 669782a9-bfbb-4367-b1f8-6aefbc55bb84
+		summarizeBy: none
+		sourceColumn: COMMENTARY
+
+		annotation SummarizationSetBy = Automatic
+
+	column DWH_CREATEDT
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c9856f8a-aabe-4530-8608-469948a42e63
+		summarizeBy: none
+		sourceColumn: DWH_CREATEDT
+
+		annotation SummarizationSetBy = Automatic
+
+	column DWH_LUPDT
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6dfdc051-4004-4295-9dc2-a8b7284f3808
+		summarizeBy: none
+		sourceColumn: DWH_LUPDT
+
+		annotation SummarizationSetBy = Automatic
+
+	column ALT_CONTRACT_ACC_HOLDER
+		dataType: string
+		lineageTag: 8965cccf-00dd-4ccc-9d5a-9bafa5f27c90
+		summarizeBy: none
+		sourceColumn: ALT_CONTRACT_ACC_HOLDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nutricia_YES_NO = IF(DIM_MEDICAL_CONTRACT_R[CONTRACT_HOLDER]="Nutricia","Nutricia","Non-Nutricia")
+		lineageTag: a2ced0a4-e0f5-439c-9623-309237b745f5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_R_NAME_grouping =
+			SWITCH(DIM_MEDICAL_CONTRACT_R[CONTRACT_R_NAME],
+			                                        "West Midlands (Worcestershire)","West Midlands (Worcester)",
+			                                        "Leeds Health Economy","Leeds",
+			                                        "South Manchester","Manchester",
+			                                        "Central Manchester (Adults)","Manchester",
+			                                        "South Manchester","Manchester",
+			                                        "Greater Manchester (MHT Hosp ONS)","Manchester",
+			                                        "Central Manchester (Paediatrics)","Manchester",
+			                                        "University Hospitals of Derby and Burton NHS Foundation Trust","Derby",
+			                                        "Cleveland Clinic","Durham Tees Valley",
+			                                        "Berkshire","Berkshire & Frimley Health",
+			                                        "Frimley Park","Berkshire & Frimley Health",
+			                                        "Oxford","Buckinghamshire & Oxford",
+			                                        "Buckinghamshire","Buckinghamshire & Oxford",
+			                                        "Isle of Wight","Hampshire and Isle of Wight ICB",
+			                                        "Portsmouth & Basingstoke","Hampshire and Isle of Wight ICB",
+			                                        "Southampton and Winchester","Hampshire and Isle of Wight ICB",
+			                                        DIM_MEDICAL_CONTRACT_R[CONTRACT_R_NAME]
+			                                        )
+		lineageTag: 58ce60eb-dfd4-4c92-8dfe-16876796da64
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_MEDICAL_CONTRACT_R = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Role="PRD_SNS_UKI_USER"]){[Name="PRD_SNS_UKI"]}[Data], "select#(lf)*#(lf)from    PRD_SNS_UKI.SNS_UKI_DSP_SNU.dim_medical_contract_R", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

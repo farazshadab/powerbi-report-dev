@@ -1,0 +1,36 @@
+table Sales_Channel_Mapping
+	lineageTag: 4b0bc627-80a9-4890-96f6-b63148c297ca
+
+	column Sales_Channel_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 982a381e-9499-49ca-b25c-03c5cd76fa46
+		summarizeBy: none
+		sourceColumn: Sales_Channel_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_Channel_Name
+		dataType: string
+		lineageTag: 2754ca17-7900-4397-8b10-51d87f459c26
+		summarizeBy: none
+		sourceColumn: Sales_Channel_Name
+		sortByColumn: Sales_Channel_ID
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sales_Channel_Mapping = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUfLILy7ILEnMUYrViVYyAgvkppYnFqWABYyBAs75ubmleZkllWARE6CIf0lGahGYZwri5eVk5qUqoCozA0q4pBZllqWmoMmYA2WCUksSMyFWGoAUlubmVio4ZyTm5aUCRWMB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Sales_Channel_ID = _t, Sales_Channel_Name = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Sales_Channel_ID", Int64.Type}, {"Sales_Channel_Name", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

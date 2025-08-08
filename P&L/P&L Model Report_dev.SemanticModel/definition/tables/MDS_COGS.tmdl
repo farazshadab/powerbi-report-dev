@@ -1,0 +1,49 @@
+table MDS_COGS
+	lineageTag: defd0093-2152-4bad-bf0e-f343f43ec107
+
+	column CODE
+		dataType: string
+		lineageTag: 0d71a2a1-343e-4ebb-87ad-7dad4ed89d03
+		summarizeBy: none
+		sourceColumn: CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU_CODE
+		dataType: string
+		lineageTag: 9da1c5be-f263-4822-81e8-a4b499f2fb7a
+		summarizeBy: none
+		sourceColumn: SKU_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_DESCRIPTION
+		dataType: string
+		lineageTag: 9ec92491-9d8d-472c-9e06-5ae72498e8ac
+		summarizeBy: none
+		sourceColumn: PRODUCT_DESCRIPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column COGS_PER_UNIT_GBP
+		dataType: double
+		lineageTag: ad6315d2-b6b5-4252-a8d7-f11777b8bf6d
+		summarizeBy: sum
+		sourceColumn: COGS_PER_UNIT_GBP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MDS_COGS = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_UKI_ANL_WH",[Implementation="2.0", Role="PRD_UKI_USER"]){[Name="PRD_UKI"]}[Data], "SELECT * FROM PRD_UKI.UKI_DSP_SNU.CONTRACT_PNL_COGS", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

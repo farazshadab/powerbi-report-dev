@@ -1,0 +1,273 @@
+table Hospital_Measures
+	lineageTag: 154c8bf3-4d9b-4236-8800-e3f072a910b7
+
+	measure Rebate_Hospital =
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Final = CALCULATE(SUM(MDS_REBATES[ANNUAL_VALUE]),
+			                        FILTER(MDS_REBATES, MDS_REBATES[CATEGORY] = "Hospital"))
+			VAR Main_Value = if(Final = BLANK(),-0,-Final)
+			Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+		lineageTag: ae963ee9-0c5a-4b71-b0b7-3eefee86e141
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Distribution_Hospital = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = [Volume_Hospital]*0.06           
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			       - Convereted_Currency
+			```
+		lineageTag: a168d1ca-b31f-4a35-bd65-42f0864125b7
+
+		formatStringDefinition =
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Hospital_Sponsorshp = ```
+			
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Final = SUM(MDS_SPONSORSHIP[ANNUAL_VALUE])
+			                        
+			VAR Main_Value = if(-Final = BLANK(),-0,-Final)
+			Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: 6d36ecc3-a2d2-4a73-aca7-969b08019213
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Pump_Volume_Hospital =
+			
+			CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]), 'P&L_Query'[SOURCE] = "HOSPITAL_PUMP",
+			                        'P&L_Query'[MEASURE_NAME] = "PUMP_COUNT")
+		formatString: #,0
+		lineageTag: b4eafbcd-48d7-4f0e-a4f7-50143008790f
+
+	measure 'PumpDep''n_Hospital' = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var V2_Count = CALCULATE(SUM(Pump_Details[MEASURE_VALUE]),Pump_Details[MEASURE_NAME] = "PUMP_COUNT", Pump_Details[SOURCE] = "HOSPITAL_PUMP",Pump_Details[INCLUDE_EXCLUDE] = "Include",Pump_Details[PUMP_MODEL] = "Infinity 2") * 70
+			Var V3_Count = CALCULATE(SUM(Pump_Details[MEASURE_VALUE]),Pump_Details[MEASURE_NAME] = "PUMP_COUNT", Pump_Details[SOURCE] = "HOSPITAL_PUMP",Pump_Details[INCLUDE_EXCLUDE] = "Include",Pump_Details[PUMP_MODEL] = "Infinity 3") * 82  
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			 VAR Main = V2_Count + V3_Count 
+			VAR Convereted_Currency = Main * Conversion_Rate
+			    RETURN
+			       -Convereted_Currency
+			       
+			```
+		lineageTag: 0e5d1eb1-ddf5-447e-95fa-94504ae24b82
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Pump_Servicng_Hospital = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var V2_Count = CALCULATE(SUM(Pump_Details[MEASURE_VALUE]),Pump_Details[MEASURE_NAME] = "PUMP_COUNT", Pump_Details[SOURCE] = "HOSPITAL_PUMP",Pump_Details[PUMP_MODEL] = "Infinity 2") * 47.5
+			Var V3_Count = CALCULATE(SUM(Pump_Details[MEASURE_VALUE]),Pump_Details[MEASURE_NAME] = "PUMP_COUNT", Pump_Details[SOURCE] = "HOSPITAL_PUMP",Pump_Details[PUMP_MODEL] = "Infinity 3") * 14 
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			 VAR Main = V2_Count + V3_Count 
+			VAR Convereted_Currency = Main * Conversion_Rate
+			    RETURN
+			      - Convereted_Currency
+			```
+		lineageTag: b7f71999-44b9-4f81-8398-f444782af77d
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure 'customer servc cost hospital' = 0
+		formatString: 0
+		lineageTag: 09963b95-974f-4234-b389-afdd733ced13
+
+	measure Nurses_hospital = 0
+		lineageTag: 6a74b0a6-f2e4-4d5b-ae7d-4fe540608cb9
+
+		formatStringDefinition =
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Volume_Hospital =
+			CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),
+			                        'P&L_Query'[SALES_CHANNEL_ID] = 1,'P&L_Query'[MEASURE_NAME]="VOLUMES_IN_UNITS")
+		formatString: #,0
+		lineageTag: e7299485-6880-4639-89da-fb3d8af8d572
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure FP10_Hospital =
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),
+			                    'P&L_Query'[SALES_CHANNEL_ID] = 1,'P&L_Query'[MEASURE_NAME]="FP10_PRICE")
+			Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+		lineageTag: a344e1c2-d883-401c-ac2f-152d19cc0060
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Invoiced_Hospital = ```
+			
+			 
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),
+			   'P&L_Query'[SALES_CHANNEL_ID] = 1,'P&L_Query'[MEASURE_NAME]="INVOICED_SALES")               
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			   
+			```
+		lineageTag: 85e22b4c-469c-42bd-8618-4c84631d4bcb
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Discount_FP10_Hospital = ```
+			
+			[Invoiced_Hospital]-[FP10_Hospital]
+			
+			
+			```
+		lineageTag: 90997683-edf0-4fb9-9d58-57f6d87e65ac
+
+		formatStringDefinition =
+				--""£"#,0.00;-"£"#,0.00;"£"#,0.00"
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure NetSales_Hospital = [Invoiced_Hospital]+Hospital_Measures[Rebate_Hospital]
+		lineageTag: cdb7214f-f704-48e4-8b40-4f7aaeccd951
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure NS/Unit_Hospital = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = [NetSales_Hospital]/[Volume_Hospital]             
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: 7e99b5e7-220b-4a31-894b-c88ef0f54e04
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0.00"
+
+	measure Others_Hospital = -0
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 873810c2-149d-492c-a1af-9e2f71eb7df7
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure COGs_Hospital = ```
+			
+			  Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			VAR Main_Value = CALCULATE( [Cogs_Value_Hos_HW_Measure], 'P&L_Pivot'[SOURCE] = "Hospital")
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: 2d571304-41bf-4af0-9ef9-9b8e6d0f3b26
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Margin_Hospital = [NetSales_Hospital]+[COGs_Hospital]
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: aadafc82-34cb-43c2-b184-3ef3798c6651
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Margin(%)_Hospital = ```
+			
+			 var Div= DIVIDE([Margin_Hospital],[NetSales_Hospital])
+			RETURN
+			IFERROR(Div, 0)
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 7084b4b4-a5c2-4b1b-843f-e90eabd512d6
+
+	measure GrossProfit_Hospital = ```
+			
+			 [NetSales_Hospital]+[COGs_Hospital]+[Distribution_Hospital]            
+			
+			```
+		lineageTag: 9fb6d82d-b4c3-496d-a43e-1f77c18225e9
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure GrossProfit(%)_Hospital = [GrossProfit_Hospital]/[NetSales_Hospital]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5f144852-382f-4207-8a1a-3fe4a81c42f0
+
+	measure Cogs/Unit_Hospital = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = [COGs_Hospital]/[Volume_Hospital]             
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: 6159f524-a7eb-46c4-a9dd-b7f7808b90bb
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0.00"
+
+	measure Contribution_Hospital = ```
+			
+			 var Gross= [GrossProfit_Hospital]
+			 var Lt= [Hospital_Sponsorshp]+[Nurses_hospital]+[Pump_Servicng_Hospital]+[PumpDep'n_Hospital]+[customer servc cost hospital]+[Others_Hospital]
+			 
+			RETURN
+			 Gross + Lt
+			
+			```
+		lineageTag: f5e41192-8857-403f-84ad-1461460e7f59
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Contribution(%)_Hospital = [Contribution_Hospital]/[NetSales_Hospital]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 34f4c248-6f0a-42bc-ba28-8cf7bc055aa1
+
+	measure Disc%_Hospital = [Discount_FP10_Hospital]/[FP10_Hospital]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9435f19b-c1b7-4813-9c4e-4b48e386fa06
+
+	partition Hospital_Measures = m
+		mode: import
+		queryGroup: Measures
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

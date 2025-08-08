@@ -1,0 +1,39 @@
+table DIM_PRODUCT_MANUFACTURER
+	lineageTag: 4c8c5d85-38d3-401b-9309-4a2663b416d3
+
+	column PROD_MANUFACTURER_ID
+		dataType: double
+		lineageTag: c27736d9-59f8-4d26-863a-cc5ceefda272
+		summarizeBy: none
+		sourceColumn: PROD_MANUFACTURER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Manufacturer
+		dataType: string
+		lineageTag: 5626e139-cb90-4bbd-a521-3b1f20af7d14
+		summarizeBy: none
+		sourceColumn: Manufacturer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nutricia_YES_NO = IF(DIM_PRODUCT_MANUFACTURER[Manufacturer]="Nutricia","Nutricia","Non-Nutricia")
+		lineageTag: 63559ef6-9b58-4a87-8deb-281346ac65f3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_PRODUCT_MANUFACTURER = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Role="PRD_SNS_UKI_USER", Implementation="2.0"]){[Name="PRD_SNS_UKI"]}[Data], "SELECT#(lf)   distinct    i.PROD_MANUFACTURER_ID,#(lf)     i.PROD_MANUFACTURER_NAME as ""Manufacturer""#(lf)#(lf)             FROM PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_MANUFACTURER i#(lf)              inner join PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT h on h.PROD_MANUFACTURER_ID=i.PROD_MANUFACTURER_ID#(lf)                inner join PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_6 e on e.PROD_HIER_LOCAL_6_ID=h.PROD_HIER_LOCAL_6_ID#(lf)                inner join  PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_5 d on d.PROD_HIER_LOCAL_5_ID=e.PROD_HIER_LOCAL_5_ID#(lf)                inner join  PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_4 a on a.PROD_HIER_LOCAL_4_ID=d.PROD_HIER_LOCAL_4_ID#(lf)                inner join   PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_3 b on a.PROD_HIER_LOCAL_3_ID=b.PROD_HIER_LOCAL_3_ID#(lf)                inner join   PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_PRODUCT_HIER_LOCAL_2 c on b.PROD_HIER_LOCAL_2_ID=c.PROD_HIER_LOCAL_2_ID#(lf)                where c.PROD_HIER_LOCAL_2_ID in (745,746,6,11)", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

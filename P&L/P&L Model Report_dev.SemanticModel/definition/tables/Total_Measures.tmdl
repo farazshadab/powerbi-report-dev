@@ -1,0 +1,191 @@
+table Total_Measures
+	lineageTag: fe5118a6-7d1d-45f8-b0c1-7eaa423f3ca1
+
+	measure Rebate_Total = [Rebate_Community]+[Rebate_ContractTotal]
+		lineageTag: 8fa0bb82-0b37-4cf6-b632-07b4a508771b
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Sponsrship_Total = [Sponsorship_ContractTotal] + [Community_Sponsrship]
+		lineageTag: 13a46015-b08d-472d-aaff-4614790bdfc4
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Customer_Service_Cost_Total = [Customer_Service_Cost_CT]
+		lineageTag: dc9c3636-44ec-4ef0-b10c-0bfc08f3ad64
+
+		formatStringDefinition =
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Nurses_Total = [Nurses_ContractTotal]+[Nurses_Community]
+		lineageTag: c4c99047-59fb-4fc3-b616-508507cd6d32
+
+		formatStringDefinition =
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure COGs_ContractTotal = ```
+			
+			
+			 [COGs_Hospital] + [COGs_Homeward]           
+			 
+			```
+		lineageTag: 6bc7b0d1-0b9e-4d05-8136-68a5bc4e1637
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Volume_Totals = [Volume_ContractTotal]
+		formatString: #,0
+		lineageTag: d70abc94-a8b7-4c63-9354-769df9cade88
+
+	measure FP10_Total = ```
+			
+			 [FP10_Community] + [FP10_ContractTotal]               
+			 
+			```
+		lineageTag: 734dbaae-9c13-4a5f-8fa7-2d24d241cf60
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Discount_Total = [Discount_FP10_Community] + [Discount_FP10_ContractTotal]
+		lineageTag: 7971d45b-a21f-4a46-9942-141c0400da13
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Invoiced_Total = [Invoiced_Community] + [Invoiced_ContractTotal]
+		lineageTag: 82a02f06-ac53-4bad-a03d-edd8579a316b
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure NetSales_Total = [Invoiced_Total]+[Rebate_Total]
+		lineageTag: 3f6fba70-b814-432f-adaa-0ef2a44f8be9
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure COG_Total = ```
+			
+			 [COGs_Community]+[COGs_ContractTotal]            
+			
+			```
+		lineageTag: d6e34fbc-72e2-4b06-81ab-f551ba0c3b84
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Margin_Totals = [Margin_Community]+[Margin_ContractTotal]
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: b626f10b-f04a-4194-b616-aa3ac4d4bb88
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Margin(%)_Total = ```
+			
+			 var Div= DIVIDE([Margin_Totals],[NetSales_Total])
+			RETURN
+			IFERROR(Div, 0)
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: be301b5d-652d-4f4e-8653-d96893adc870
+
+	measure Distribution_Total = ```
+			
+			
+			[Distribution_Community]+[Distribution_ContractTotal]             
+			
+			```
+		lineageTag: 6eba90bb-d20a-457f-ad29-7552959733cb
+
+		formatStringDefinition =
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure GrossProfit_Total = ```
+			
+			 [NetSales_Total] + [COG_Total] +[Distribution_Total]             
+			
+			```
+		lineageTag: a286f50c-6c9d-45dc-8fbf-9b74210d7463
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure GrossProfit(%)_Total = [GrossProfit_Total]/[NetSales_Total]
+		formatString: 0%;-0%;0%
+		lineageTag: 0c1cbb65-f3e9-4402-82ad-2ab75e904a4f
+
+	measure Others_Totals = [Others_Communuty]+[Others_CT]
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 04cef569-8962-4d4b-a3f3-78a7226eb6fe
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Contribution_Total = ```
+			
+			 var Gross= [GrossProfit_Total]
+			 var Lt= [Sponsrship_Total]+[Nurses_Total]++[PumpDep'n_ContractTotal]+[Pump_servcng_Total]+[Customer_Service_Cost_Total]+[Others_Totals]
+			 
+			     RETURN
+			        Gross+Lt   
+			```
+		lineageTag: b2827bfa-c324-4f99-bdc0-c64d9c64128a
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Pump_servcng_Total = [Pump_Servicing_Contracttotal]+0
+		formatString: 0
+		lineageTag: b8027861-89ce-4030-9732-275a86d4477c
+
+	measure Contribution(%)_Totals = DIVIDE([Contribution_Total],[NetSales_Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c9242d2d-78ec-47d2-94c9-3b93251a0cf8
+
+	measure Disc%_Total = [Discount_FP10_Total]/[FP10_Total]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 565dd063-71b8-4162-924c-316ef6128f6a
+
+	measure 'PumpDep''n_Total' = ```
+			
+			 [PumpDep'n_ContractTotal]             
+			
+			```
+		lineageTag: 6588973f-b5eb-4f6a-8bb7-04fa8bc77292
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Discount_FP10_Total = ```
+			
+			[Discount_FP10_ContractTotal] 
+			
+			```
+		lineageTag: 4d075377-d8f7-4c5b-8f3f-3687b536cd92
+
+		formatStringDefinition =
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	partition Total_Measures = m
+		mode: import
+		queryGroup: Measures
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

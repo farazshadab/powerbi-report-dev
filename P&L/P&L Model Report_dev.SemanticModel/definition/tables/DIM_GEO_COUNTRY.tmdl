@@ -1,0 +1,33 @@
+table DIM_GEO_COUNTRY
+	lineageTag: fb66e134-f1a0-488e-a3de-f633549401a8
+
+	column Country
+		dataType: string
+		lineageTag: 28df5e32-1ebd-41f0-a0a2-07626902dea7
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column GEO_COUNTRY_ID
+		dataType: double
+		lineageTag: 4526849a-dded-48b1-a1f5-cdba1d9c5182
+		summarizeBy: none
+		sourceColumn: GEO_COUNTRY_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DIM_GEO_COUNTRY = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Implementation="2.0", Role="PRD_SNS_UKI_USER"]){[Name="PRD_SNS_UKI"]}[Data], "SELECT#(lf)    COUNTRY_NAME as ""Country"",#(lf)    GEO_COUNTRY_ID#(lf)FROM#(lf)     PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_GEO_COUNTRY", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

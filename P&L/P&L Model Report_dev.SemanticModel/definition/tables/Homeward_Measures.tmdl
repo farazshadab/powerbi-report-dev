@@ -1,0 +1,341 @@
+table Homeward_Measures
+	lineageTag: af47d18a-70ac-4958-a696-ea035bcfcafa
+
+	measure Rebate_Homeward = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Final = CALCULATE(SUM(MDS_REBATES[ANNUAL_VALUE]),
+			                        FILTER(MDS_REBATES, MDS_REBATES[CATEGORY] = "Homeward")) 
+			VAR Main_Value=  if(Final = BLANK(),-0,-Final)
+			Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: c28a3e6a-c4db-4790-a4d0-27383307de5c
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Homeward_Sponsorshp = -0
+		lineageTag: 588ae619-a7ee-4359-9365-7010b913e754
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Pump_Volume_Homeward = ```
+			
+			CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]), 'P&L_Query'[SOURCE] = "PATIENT_PUMP",
+			                        'P&L_Query'[MEASURE_NAME] = "PUMP_COUNT")
+			
+			```
+		formatString: #,0
+		lineageTag: 07cd4936-7997-4c52-b0f7-9414010c4d08
+
+	measure Distribution_Homeward = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = [PatientNumber_Homeward]*275            
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			       - Convereted_Currency
+			```
+		lineageTag: d0e8c1a1-ad3e-4ffa-aac0-1abd597a80dd
+
+		formatStringDefinition =
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure 'PumpDep''n_Homeward' = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var V2_Count = CALCULATE(SUM(Pump_Details[MEASURE_VALUE]),Pump_Details[MEASURE_NAME] = "PUMP_COUNT", Pump_Details[SOURCE] = "PATIENT_PUMP", Pump_Details[INCLUDE_EXCLUDE] = "INCLUDE",Pump_Details[PUMP_MODEL] = "Infinity 2") * 70
+			Var V3_Count = CALCULATE(SUM(Pump_Details[MEASURE_VALUE]),Pump_Details[MEASURE_NAME] = "PUMP_COUNT", Pump_Details[SOURCE] = "PATIENT_PUMP", Pump_Details[INCLUDE_EXCLUDE] = "INCLUDE",Pump_Details[PUMP_MODEL] = "Infinity 3") * 82             
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			  VAR Main = V2_Count + V3_Count 
+			VAR Convereted_Currency = Main * Conversion_Rate
+			    RETURN
+			        -Convereted_Currency
+			
+			
+			
+			
+			
+			```
+		lineageTag: 7d9a857a-fac3-4a16-93ce-ed3f3f5604a6
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Pump_Servicing_Homeward = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var V2_Count = CALCULATE(SUM(Pump_Details[MEASURE_VALUE]),Pump_Details[MEASURE_NAME] = "PUMP_COUNT", Pump_Details[SOURCE] = "PATIENT_PUMP",Pump_Details[PUMP_MODEL] = "Infinity 2") * 47.5
+			Var V3_Count = CALCULATE(SUM(Pump_Details[MEASURE_VALUE]),Pump_Details[MEASURE_NAME] = "PUMP_COUNT", Pump_Details[SOURCE] = "PATIENT_PUMP",Pump_Details[PUMP_MODEL] = "Infinity 3") * 14            
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			  VAR Main = V2_Count + V3_Count 
+			VAR Convereted_Currency = Main * Conversion_Rate
+			    RETURN
+			       - Convereted_Currency
+			```
+		lineageTag: 5565245f-0a77-4189-9e35-e0aeefd41f4d
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Nurses_Homeward =
+			
+			// Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			// VAR LonorNonLon = Sum(MDS_NURSES[Total_Nurses_Salary])
+			// Var ManagerCost = (Sum(MDS_NURSES[NURSE_WTE])/7)* 83560.96
+			// Var NurseandManager = LonorNonLon+ManagerCost
+			//  Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			// VAR Convereted_Currency = NurseandManager * Conversion_Rate
+			//     RETURN
+			//         -Convereted_Currency
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var London_Salary = 61470.526224
+			Var Non_London_Salary = 57372
+			Var Manager_Salary = 83560.96
+			Var Nurse_WTE = SUM(MDS_NURSES[NURSE_WTE])
+			var Nurse_cost = SUM(MDS_NURSES[Total_Nurses_Cost])
+			//Var Nurse_cost = IF(SELECTEDVALUE(MDS_NURSES[London/Non London]) = "London",London_Salary*Nurse_WTE,Non_London_Salary*Nurse_WTE)+(Manager_Salary*(Nurse_WTE/7))
+			Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Nurse_cost * Conversion_Rate
+			RETURN
+			-Convereted_Currency
+		lineageTag: 65766758-f308-4f47-a9c1-f20aa6d316f2
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Customer_Service_Cost_Homeward = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value1 = [Patient_co-ordinators_cost] + [Team_Leader_cost] + [Regional_Lead_cost] + [RMDCs_cost] + [Prescription_co-ordinator_cost]
+			Var Main_Value2 = [Patient_co-ordinators_cost] + [Team_Leader_cost] + [Regional_Lead_cost] + [RMDCs_cost]
+			Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency1 = Main_Value1 * Conversion_Rate
+			VAR Convereted_Currency2 = Main_Value2 * Conversion_Rate
+			    RETURN 
+			      if(SELECTEDVALUE(DIM_MEDICAL_CONTRACT[ON_FP10]) = "On FP10", -Convereted_Currency1, -Convereted_Currency2)
+			```
+		lineageTag: 54bce8aa-305c-4d03-aa04-a11ce8c06bc6
+
+		formatStringDefinition =
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Volume_Homeward =
+			CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),
+			                        'P&L_Query'[SALES_CHANNEL_ID] = 2,'P&L_Query'[MEASURE_NAME]="VOLUMES_IN_UNITS")
+		formatString: #,0
+		lineageTag: 67e4cf84-406c-4de1-a927-79e3df254fcf
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure FP10_Homeward = ```
+			
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),
+			                    'P&L_Query'[SALES_CHANNEL_ID] = 2,'P&L_Query'[MEASURE_NAME]="FP10_PRICE")                 
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: a641eca1-90d4-4a11-96af-3d3044e524e6
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Invoiced_Homeward = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),
+			                        'P&L_Query'[SALES_CHANNEL_ID] = 2,'P&L_Query'[MEASURE_NAME]="INVOICED_SALES")                
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: a87353c3-8824-441c-9d2a-5fc6f1d2b2e2
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Discount_FP10_Homeward = [Invoiced_Homeward]-[FP10_Homeward]
+		lineageTag: be152c57-76c8-4886-9154-482adc7328cc
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure NetSales_Homeward = [Invoiced_Homeward]+Homeward_Measures[Rebate_Homeward]
+		lineageTag: db2e584a-8f78-4d82-92dc-5935d80817fe
+
+		formatStringDefinition =
+				--""£"#,0;-"£"#,0;"£"#,0"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure NS/Unit_Homeward = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = [NetSales_Homeward]/[Volume_Homeward]              
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: de684543-59fb-438a-9f09-17f037d0a970
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0.00"
+
+	measure NetSales/Patient_Hospital = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = [NetSales_Homeward]/[PatientNumber_Homeward]              
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			
+			```
+		lineageTag: c5584929-2744-440d-b453-0c51c8f8aa53
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Others_Homeward = -0
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: e9a5a051-7d61-433a-9e68-a1e793880022
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure COGs_Homeward = ```
+			
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			/*Var Main_Value = CALCULATE(SUM(Cogs_Main[Cogs]),Cogs_Main[SALES_CHANNEL_ID] = 2)   */ 
+			VAR Main_Value =CALCULATE( [Cogs_Value_Hos_HW_Measure], 'P&L_Pivot'[SOURCE] = "Homeward Sales")
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: e244692c-6b15-40cd-a07e-09e9a19e3623
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Margin_Homeward = [NetSales_Homeward]-[COGs_Homeward]
+		formatString: "£"#,0;-"£"#,0;"£"#,0
+		lineageTag: 08473e44-2b61-4f81-b4e3-00ea009d17e5
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure Margin(%)_Homeward = ```
+			
+			 var Div= DIVIDE([Margin_Homeward],[NetSales_Homeward])
+			RETURN
+			IFERROR(Div, 0)
+			```
+		lineageTag: 49e95a18-aa65-420f-99e3-64b2c105487d
+
+		formatStringDefinition =
+				--"\$#,0.###############;(\$#,0.###############);\$#,0.###############"
+				SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure GrossProfit_Homeward = ```
+			
+			 [NetSales_Homeward]+[COGs_Homeward]+[Distribution_Homeward]         
+			
+			```
+		lineageTag: a510e05a-e190-4bc0-81ba-35830ea3544c
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure GrossProfit(%)_Homeward = ([GrossProfit_Homeward]/[NetSales_Homeward])
+		formatString: 0%;-0%;0%
+		lineageTag: 4ea8d7c1-72ff-4250-a80b-e97b624baeb3
+
+	measure Cogs/Unit_Homeward = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = [COGs_Homeward]/[Volume_Homeward]             
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: 4e1bdd5c-4fa9-4e55-a3eb-5d429a42ecfa
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0.00"
+
+	measure Margin_Patient = ```
+			
+			Var Selected_Country = SELECTEDVALUE(Currency_Table[Currency])
+			Var Main_Value = [GrossProfit_Homeward]/[PatientNumber_Homeward]             
+			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
+			VAR Convereted_Currency = Main_Value * Conversion_Rate
+			    RETURN
+			        Convereted_Currency
+			```
+		lineageTag: c1e107c5-0f50-4cca-b30c-e29a061de0b8
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Contribution_Homeward = ```
+			
+			 var Gross= [GrossProfit_Homeward]
+			 var Lt= [Homeward_Sponsorshp]+[Nurses_Homeward]+[Pump_Servicing_Homeward]+[PumpDep'n_Homeward]+[Customer_Service_Cost_Homeward]+[Others_Homeward]
+			
+			 RETURN
+			Gross+Lt            
+			
+			```
+		lineageTag: 9ca5f72e-cd78-476f-94af-866a9666b673
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Contribution(%)_Homeward = [Contribution_Homeward]/[NetSales_Homeward]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f96c8e5c-3142-422e-b17e-36dac6b6e8bc
+
+	measure Disc%_Homeward = [Discount_FP10_Homeward]/[FP10_Homeward]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c6cd2e4b-ce88-4186-add1-9c8ec854e717
+
+	measure PatientNumber_Homeward =
+			/*CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),'P&L_Query'[MEASURE_NAME] = "NUM_OF_ACTIVE_PATIENT")*/
+			[Current_Active_Patient_Nos]
+		formatString: #,0
+		lineageTag: f69789e8-dc26-4ca5-a966-2b0a35e284c4
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 123 =
+			
+			SUM('P&L_Query'[MEASURE_VALUE])
+		formatString: 0
+		lineageTag: 1a1a47cf-47c4-4ab2-ac0b-da4cb277973e
+
+	measure Current_Active_Patient_Nos = DISTINCTCOUNT(PATIENT_COUNT[PATIENT_ID])
+		formatString: 0
+		lineageTag: 834962f6-aa69-4bfb-9b41-9910a8013128
+
+	partition Homeward_Measures = m
+		mode: import
+		queryGroup: Measures
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

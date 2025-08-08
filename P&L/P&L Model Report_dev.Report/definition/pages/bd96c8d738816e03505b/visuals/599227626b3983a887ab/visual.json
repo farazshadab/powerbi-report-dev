@@ -1,0 +1,290 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "599227626b3983a887ab",
+  "position": {
+    "x": 0,
+    "y": 114.21221864951768,
+    "z": 0,
+    "height": 530.93247588424435,
+    "width": 1280,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_MEDICAL_CONTRACT_R"
+                    }
+                  },
+                  "Property": "CONTRACT_R_NAME"
+                }
+              },
+              "queryRef": "DIM_MEDICAL_CONTRACT_R.CONTRACT_R_NAME",
+              "nativeQueryRef": "CONTRACT_R_NAME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_MEDICAL_CONTRACT_R"
+                    }
+                  },
+                  "Property": "Nutricia_YES_NO"
+                }
+              },
+              "queryRef": "DIM_MEDICAL_CONTRACT_R.Nutricia_YES_NO",
+              "nativeQueryRef": "Nutricia_YES_NO"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Volume_Totals"
+                }
+              },
+              "queryRef": "Total_Measures.Volume_Totals",
+              "nativeQueryRef": "Volume_Totals"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "FP10_Total"
+                }
+              },
+              "queryRef": "Total_Measures.FP10_Total",
+              "nativeQueryRef": "FP10_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Discount_FP10_Total"
+                }
+              },
+              "queryRef": "Total_Measures.Discount_FP10_Total",
+              "nativeQueryRef": "Discount_FP10_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Disc%_Total"
+                }
+              },
+              "queryRef": "Total_Measures.Disc%_Total",
+              "nativeQueryRef": "Disc%_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Rebate_Total"
+                }
+              },
+              "queryRef": "Total_Measures.Rebate_Total",
+              "nativeQueryRef": "Rebate_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "NetSales_Total"
+                }
+              },
+              "queryRef": "Total_Measures.NetSales_Total",
+              "nativeQueryRef": "NetSales_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "COG_Total"
+                }
+              },
+              "queryRef": "Total_Measures.COG_Total",
+              "nativeQueryRef": "COG_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Distribution_Total"
+                }
+              },
+              "queryRef": "Total_Measures.Distribution_Total",
+              "nativeQueryRef": "Distribution_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "GrossProfit_Total"
+                }
+              },
+              "queryRef": "Total_Measures.GrossProfit_Total",
+              "nativeQueryRef": "GrossProfit_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "GrossProfit(%)_Total"
+                }
+              },
+              "queryRef": "Total_Measures.GrossProfit(%)_Total",
+              "nativeQueryRef": "GrossProfit(%)_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Sponsrship_Total"
+                }
+              },
+              "queryRef": "Total_Measures.Sponsrship_Total",
+              "nativeQueryRef": "Sponsrship_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "PumpDep'n_Total"
+                }
+              },
+              "queryRef": "Total_Measures.PumpDep'n_Total",
+              "nativeQueryRef": "PumpDep'n_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Pump_servcng_Total"
+                }
+              },
+              "queryRef": "Total_Measures.Pump_servcng_Total",
+              "nativeQueryRef": "Pump_servcng_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Customer_Service_Cost_Total"
+                }
+              },
+              "queryRef": "Total_Measures.Customer_Service_Cost_Total",
+              "nativeQueryRef": "Customer_Service_Cost_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Others_Totals"
+                }
+              },
+              "queryRef": "Total_Measures.Others_Totals",
+              "nativeQueryRef": "Others_Totals"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Contribution_Total"
+                }
+              },
+              "queryRef": "Total_Measures.Contribution_Total",
+              "nativeQueryRef": "Contribution_Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Total_Measures"
+                    }
+                  },
+                  "Property": "Contribution(%)_Totals"
+                }
+              },
+              "queryRef": "Total_Measures.Contribution(%)_Totals",
+              "nativeQueryRef": "Contribution(%)_Totals"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

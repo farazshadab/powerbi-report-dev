@@ -1,0 +1,49 @@
+table MDS_NURSING_CUST_SERVICE
+	lineageTag: e0a28d72-b7cf-4a7b-911d-6f4bf2659d15
+
+	column CODE
+		dataType: string
+		lineageTag: e01522a5-2dca-42a3-8ab6-0014b215991d
+		summarizeBy: none
+		sourceColumn: CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column TYPE
+		dataType: string
+		lineageTag: 7eba5833-eab7-492b-9363-45a03ee533ae
+		summarizeBy: none
+		sourceColumn: TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column KEY
+		dataType: string
+		lineageTag: 4f5f1878-1068-4805-bc94-c6ea95060745
+		summarizeBy: none
+		sourceColumn: KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column VALUE
+		dataType: double
+		lineageTag: d9647295-923d-48cd-9ffb-69c5e2f853e0
+		summarizeBy: sum
+		sourceColumn: VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MDS_NURSING_CUST_SERVICE = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_UKI_ANL_WH",[Implementation="2.0", Role="PRD_UKI_USER"]){[Name="PRD_UKI"]}[Data], "SELECT * FROM PRD_UKI.UKI_DSP_SNU.CONTRACT_PNL_NURSING_CUST_SERVICE", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

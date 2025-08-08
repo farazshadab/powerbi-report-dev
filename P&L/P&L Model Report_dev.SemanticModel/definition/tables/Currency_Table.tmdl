@@ -1,0 +1,56 @@
+table Currency_Table
+	lineageTag: 7ee86f1a-abca-43e5-b03f-bad5ad3daf99
+
+	column Currency
+		dataType: string
+		lineageTag: 76e9ec1f-9761-4c91-8104-be87b1552dcf
+		summarizeBy: none
+		sourceColumn: Currency
+		sortByColumn: Code
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Code
+		dataType: int64
+		formatString: 0
+		lineageTag: c353c902-d947-4ea3-93fe-540056a6a478
+		summarizeBy: count
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Symbol
+		dataType: string
+		lineageTag: 831e90bf-3a46-41d8-aada-8e871b52f6d9
+		summarizeBy: none
+		sourceColumn: Symbol
+
+		annotation SummarizationSetBy = Automatic
+
+	column GBP_Conversion
+		dataType: double
+		lineageTag: 8feb812b-a5d1-4745-a945-de6c079d3d44
+		summarizeBy: sum
+		sourceColumn: GBP_Conversion
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Currency_Table = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wcg0NUtJRMgTiR01rQCw9Q0ulWJ1oJXenACDXCIgPLQariI0FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Currency = _t, Code = _t, Symbol = _t, GBP_Conversion = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Currency", type text}, {"Code", Int64.Type}, {"Symbol", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

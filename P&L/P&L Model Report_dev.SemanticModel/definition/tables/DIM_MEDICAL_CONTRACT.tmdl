@@ -1,0 +1,79 @@
+table DIM_MEDICAL_CONTRACT
+	lineageTag: 0a2e7195-dd0f-4e9f-9df9-3f3f6616de83
+
+	column CONTRACT_ID
+		dataType: string
+		lineageTag: 10c9dd6d-6fcc-42bf-94a1-8eb0ceeffc6a
+		summarizeBy: none
+		sourceColumn: CONTRACT_ID
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_CODE
+		dataType: string
+		lineageTag: af2500d5-8ef2-4a1b-bac2-c4b12ef55969
+		summarizeBy: none
+		sourceColumn: CONTRACT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_R_ID
+		dataType: double
+		lineageTag: 0df45822-8ce5-4a03-8a41-f9658e02a2dd
+		summarizeBy: none
+		sourceColumn: CONTRACT_R_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CURO_SUB_CONTRACT_ID
+		dataType: double
+		lineageTag: 586bbb94-392d-4066-8ef6-c9cdc4d580ff
+		summarizeBy: count
+		sourceColumn: CURO_SUB_CONTRACT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Medical Contract'
+		dataType: string
+		lineageTag: dd6ddd8a-f9ef-43ae-b965-d8cb7d906d01
+		summarizeBy: none
+		sourceColumn: Medical Contract
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Contract'
+		dataType: string
+		lineageTag: 1e598c5d-f6de-4f95-a2e3-4f6acb50fcd7
+		summarizeBy: none
+		sourceColumn: Current Contract
+
+		annotation SummarizationSetBy = Automatic
+
+	column ON_FP10
+		dataType: string
+		lineageTag: f046d50f-719c-436c-af5a-21694bb3d796
+		summarizeBy: none
+		sourceColumn: ON_FP10
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_MEDICAL_CONTRACT = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Role="PRD_SNS_UKI_USER"]){[Name="PRD_SNS_UKI"]}[Data], "select#(lf)   contract_id,#(lf)   CONTRACT_R_ID,#(lf)   curo_sub_contract_id,#(lf)   CONTRACT_CODE,#(lf)   CONTRACT_NAME as ""Medical Contract"",#(lf)Current_contract as ""Current Contract""#(lf)from    PRD_SNS_UKI.SNS_UKI_DSP_SNU.dim_medical_contract", null, [EnableFolding=true]),
+				    #"Merged Queries" = Table.NestedJoin(Source, {"CONTRACT_CODE"}, MDS_UK_CONTRACT_N, {"CONTRACT_N"}, "MDS_UK_CONTRACT_N", JoinKind.LeftOuter),
+				    #"Expanded MDS_UK_CONTRACT_N" = Table.ExpandTableColumn(#"Merged Queries", "MDS_UK_CONTRACT_N", {"ON_FP10"}, {"ON_FP10"})
+				in
+				    #"Expanded MDS_UK_CONTRACT_N"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

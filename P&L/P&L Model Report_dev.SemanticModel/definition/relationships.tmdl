@@ -1,0 +1,113 @@
+relationship AutoDetected_f81f5b95-27dd-40d8-9092-bfa380adf66b
+	fromColumn: DIM_PRODUCT.PROD_MANUFACTURER_ID
+	toColumn: DIM_PRODUCT_MANUFACTURER.PROD_MANUFACTURER_ID
+
+relationship AutoDetected_b231654f-115e-4780-ad3a-7bdae7c5b41c
+	fromColumn: P&L_Query.PRODUCT_ID
+	toColumn: DIM_PRODUCT.PRODUCT_ID
+
+relationship 5746914d-6c95-57b7-896f-088001da606d
+	fromColumn: DIM_MEDICAL_CONTRACT.CONTRACT_R_ID
+	toColumn: DIM_MEDICAL_CONTRACT_R.CONTRACT_R_ID
+
+relationship b308845e-e203-098f-f7ff-b40d55011316
+	crossFilteringBehavior: bothDirections
+	fromColumn: P&L_Query.SALES_CHANNEL_ID
+	toColumn: Sales_Channel_Mapping.Sales_Channel_ID
+
+relationship 406295e3-8e55-97bc-ba83-55c694d3d128
+	crossFilteringBehavior: bothDirections
+	fromColumn: P&L_Query.CONTRACT_ID
+	toColumn: DIM_MEDICAL_CONTRACT.CONTRACT_ID
+
+relationship ebd7b489-5c19-19b4-5d62-8408fd1654b6
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: DIM_MEDICAL_CONTRACT.CONTRACT_R_ID
+	toColumn: Pump_Details.CONTRACT_R_ID
+
+relationship 822d6ba9-f9ec-b1f4-5d3c-d4da431cce65
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: P&L_Query.CURO_SUB_CONTRACT_ID
+	toColumn: Pump_Details.CURO_SUB_CONTRACT_ID
+
+relationship 37d3896a-e727-7191-ab73-c2e7f49e57c5
+	fromColumn: Pump_Details.PRODUCT_ID
+	toColumn: DIM_PRODUCT.PRODUCT_ID
+
+relationship 1f7e0444-2da8-0301-1e95-e796a959252f
+	fromColumn: P&L_Pivot.PRODUCT_ID
+	toColumn: DIM_PRODUCT.PRODUCT_ID
+
+relationship f18b8ea2-939e-b654-7e22-2a5b4e809364
+	fromColumn: Patients_Pivot.CONTRACT_R_ID
+	toColumn: DIM_MEDICAL_CONTRACT_R.CONTRACT_R_ID
+
+relationship 77a4de0d-2b77-b1f5-8801-ce2d106be2f3
+	fromColumn: P&L_Pivot.CONTRACT_ID
+	toColumn: DIM_MEDICAL_CONTRACT.CONTRACT_ID
+
+relationship 02770a1d-b868-fa91-4745-2da2db044daf
+	fromColumn: Pump_Pivot.CONTRACT_R_ID
+	toColumn: DIM_MEDICAL_CONTRACT_R.CONTRACT_R_ID
+
+relationship ffdb6148-85ce-0ad8-7d27-da1514249ab2
+	crossFilteringBehavior: bothDirections
+	fromColumn: P&L_Pivot.SKU
+	toColumn: Cogs_Hos_HW.SKU
+
+relationship 15357236-65c9-a2a0-248f-40ffc883f383
+	fromColumn: MDS_REBATES.CONTRACT
+	toColumn: DIM_MEDICAL_CONTRACT.CONTRACT_CODE
+
+relationship 8467340b-82dc-d7fd-dc20-8b70d9758821
+	fromColumn: MDS_NURSES.CONTRACT
+	toColumn: DIM_MEDICAL_CONTRACT.CONTRACT_CODE
+
+relationship 9d531ad2-5dd6-373f-adf0-8f830be47de7
+	fromColumn: MDS_SPONSORSHIP.CONTRACT
+	toColumn: DIM_MEDICAL_CONTRACT.CONTRACT_CODE
+
+relationship efc59266-d219-6ff0-389c-88df434c7140
+	fromColumn: DIM_GEO_TERRITORY.GEO_CCG_ID
+	toColumn: DIM_GEO_CCG.GEO_CCG_ID
+
+relationship c7c416d1-ccd6-dc0e-e8fe-9d331f307957
+	fromColumn: DIM_GEO_TERRITORY.GEO_COUNTRY_ID
+	toColumn: DIM_GEO_COUNTRY.GEO_COUNTRY_ID
+
+relationship e5a98aff-03e4-e1a3-0559-bb25fc769146
+	fromColumn: P&L_Query.GEOGRAPHY_ID
+	toColumn: DIM_GEO_TERRITORY.GEO_TERRITORY_ID
+
+relationship 59f5662d-16ab-444b-f503-b20bb055927b
+	fromColumn: Pump_Pivot.GEOGRAPHY_ID
+	toColumn: DIM_GEO_TERRITORY.GEO_TERRITORY_ID
+
+relationship 365401cb-e6d1-a742-98a6-f12ec70cd5f5
+	fromColumn: P&L_Pivot.GEOGRAPHY_ID
+	toColumn: DIM_GEO_TERRITORY.GEO_TERRITORY_ID
+
+relationship 3de947fb-3da1-60dc-d523-30c6341a895f
+	fromColumn: Pump_Details.GEOGRAPHY_ID
+	toColumn: DIM_GEO_TERRITORY.GEO_TERRITORY_ID
+
+relationship d3b57cf5-3197-31a5-6622-a53d41210b71
+	fromColumn: DIM_PRODUCT.PROD_HIER_LOCAL_6_NAME
+	toColumn: Product_classification.'Commercial 6'
+
+relationship 6b15f41b-3243-2b84-5abc-7639a0501d38
+	fromColumn: PATIENT_COUNT.CONTRACT_ID
+	toColumn: DIM_MEDICAL_CONTRACT.CONTRACT_ID
+
+relationship 8d0a113d-4e56-4fba-1a25-b2a4107c3a4d
+	crossFilteringBehavior: bothDirections
+	fromColumn: PATIENT_COUNT.PRODUCT_ID
+	toColumn: DIM_PRODUCT.PRODUCT_ID
+
+relationship a4acbf8f-2ea1-01ba-38d4-32178129e15e
+	fromColumn: PATIENT_COUNT.GEOGRAPHY_ID
+	toColumn: DIM_GEO_TERRITORY.GEO_TERRITORY_ID
+

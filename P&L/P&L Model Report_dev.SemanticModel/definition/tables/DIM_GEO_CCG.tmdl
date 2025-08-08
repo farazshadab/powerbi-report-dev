@@ -1,0 +1,41 @@
+table DIM_GEO_CCG
+	lineageTag: ba96e7b7-7b29-48f6-98e0-d5040b9cf198
+
+	column GEO_CCG_ID
+		dataType: double
+		lineageTag: 81904d47-63b4-4592-b433-5ca0d0f4462c
+		summarizeBy: none
+		sourceColumn: GEO_CCG_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CCG
+		dataType: string
+		lineageTag: 1d20dd11-b14c-42a1-a510-905eece9320e
+		summarizeBy: none
+		sourceColumn: CCG
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'METABOLIC KEY CENTRE'
+		dataType: string
+		lineageTag: ef9df1b3-a5fe-4f64-a0ca-63c814cbec2e
+		summarizeBy: none
+		sourceColumn: METABOLIC KEY CENTRE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_GEO_CCG = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Implementation="2.0", Role="PRD_SNS_UKI_USER"]){[Name="PRD_SNS_UKI"]}[Data], "SELECT#(lf)    GEO_CCG_ID,#(lf)    CCG_NAME as ""CCG""#(lf),METABOLIC_KEY_CENTRE as ""METABOLIC KEY CENTRE""  FROM#(lf)     PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_GEO_CCG", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

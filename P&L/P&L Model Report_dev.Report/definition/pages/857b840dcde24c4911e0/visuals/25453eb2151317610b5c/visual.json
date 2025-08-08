@@ -1,0 +1,241 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "25453eb2151317610b5c",
+  "position": {
+    "x": 26,
+    "y": 308,
+    "z": 0,
+    "height": 526,
+    "width": 1222
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pump_Pivot"
+                    }
+                  },
+                  "Property": "SOURCE"
+                }
+              },
+              "queryRef": "Pump_Pivot.SOURCE",
+              "nativeQueryRef": "SOURCE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pump_Pivot"
+                    }
+                  },
+                  "Property": "PRODUCT_ID"
+                }
+              },
+              "queryRef": "Pump_Pivot.PRODUCT_ID",
+              "nativeQueryRef": "PRODUCT_ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pump_Pivot"
+                    }
+                  },
+                  "Property": "PRODUCT_CODE"
+                }
+              },
+              "queryRef": "Pump_Pivot.PRODUCT_CODE",
+              "nativeQueryRef": "SKU",
+              "displayName": "SKU"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pump_Pivot"
+                    }
+                  },
+                  "Property": "PRODUCT_DESCRIPTION"
+                }
+              },
+              "queryRef": "Pump_Pivot.PRODUCT_DESCRIPTION",
+              "nativeQueryRef": "PRODUCT_DESCRIPTION"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pump_Pivot"
+                    }
+                  },
+                  "Property": "PUMP_MODEL"
+                }
+              },
+              "queryRef": "Pump_Pivot.PUMP_MODEL",
+              "nativeQueryRef": "PUMP_MODEL"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pump_Pivot"
+                    }
+                  },
+                  "Property": "PUMP_DATE"
+                }
+              },
+              "queryRef": "Pump_Pivot.PUMP_DATE",
+              "nativeQueryRef": "PUMP_DATE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pump_Pivot"
+                    }
+                  },
+                  "Property": "INCLUDE_EXCLUDE"
+                }
+              },
+              "queryRef": "Pump_Pivot.INCLUDE_EXCLUDE",
+              "nativeQueryRef": "INCLUDE_EXCLUDE"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pump_Pivot"
+                    }
+                  },
+                  "Property": "Pump_Count_New"
+                }
+              },
+              "queryRef": "Pump_Pivot.Pump_Count_New",
+              "nativeQueryRef": "Pump_Count_New"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pump_Pivot"
+                    }
+                  },
+                  "Property": "Pump_In_Service_Count_New"
+                }
+              },
+              "queryRef": "Pump_Pivot.Pump_In_Service_Count_New",
+              "nativeQueryRef": "Pump_In_Service_Count_New"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pump_Pivot"
+                    }
+                  },
+                  "Property": "Pump_Not_In_Service_Count_New"
+                }
+              },
+              "queryRef": "Pump_Pivot.Pump_Not_In_Service_Count_New",
+              "nativeQueryRef": "Pump_Not_In_Service_Count_New"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Pump_Pivot"
+                  }
+                },
+                "Property": "PRODUCT_CODE"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "138.58332854787238D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Pump_Pivot.INCLUDE_EXCLUDE"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Pump_Pivot.Pump_Not_In_Service_Count_New"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "112.00001027033728D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Pump_Pivot.Pump_In_Service_Count_New"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Pump_Pivot.Pump_Count_New"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

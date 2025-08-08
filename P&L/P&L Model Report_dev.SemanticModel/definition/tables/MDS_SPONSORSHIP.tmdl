@@ -1,0 +1,123 @@
+table MDS_SPONSORSHIP
+	lineageTag: 287884fd-32e4-4415-b685-71ce4f271186
+
+	column CODE
+		dataType: string
+		lineageTag: ee57cb53-a5b0-45d5-be4d-8f5c4e8a522d
+		summarizeBy: none
+		sourceColumn: CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT
+		dataType: string
+		lineageTag: 78ec9708-9794-4b3b-b906-4d49c1905b61
+		summarizeBy: none
+		sourceColumn: CONTRACT
+
+		annotation SummarizationSetBy = Automatic
+
+	column GROUP_NAME
+		dataType: string
+		lineageTag: a4233fbc-7816-4061-8f37-6f3f1a4a1084
+		summarizeBy: none
+		sourceColumn: GROUP_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column HCP_FUNDING_AREA
+		dataType: string
+		lineageTag: 40a03c9f-751a-4be0-9d8f-f76dba4ce559
+		summarizeBy: none
+		sourceColumn: HCP_FUNDING_AREA
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR
+		dataType: double
+		lineageTag: cdb6e584-0523-4ec1-ae92-634a139317b1
+		summarizeBy: sum
+		sourceColumn: YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ANNUAL_VALUE
+		dataType: double
+		lineageTag: 42e1f56c-92e1-4d9f-badb-97e40202eadb
+		summarizeBy: sum
+		sourceColumn: ANNUAL_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PO_NUMBER
+		dataType: string
+		lineageTag: 00051480-d650-4a7f-985d-9ac25b19ed9b
+		summarizeBy: none
+		sourceColumn: PO_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column VENDOR
+		dataType: string
+		lineageTag: c96c10c5-6d2c-4141-b2d5-d7db5cb00d9c
+		summarizeBy: none
+		sourceColumn: VENDOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column Con = RELATED(DIM_MEDICAL_CONTRACT_R[CONTRACT_R_NAME_grouping])
+		lineageTag: 19e91c3a-8185-4278-b874-5417d185ea59
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column TENDER_GROUP
+		dataType: string
+		lineageTag: 670b2949-e5b7-4cf1-b53e-e749c936a97c
+		summarizeBy: none
+		sourceColumn: TENDER_GROUP
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPC_FUNDING
+		dataType: string
+		lineageTag: 411abf54-1474-443c-9202-57665d04ebfd
+		summarizeBy: none
+		sourceColumn: CPC_FUNDING
+
+		annotation SummarizationSetBy = Automatic
+
+	column TYPE_OF_FUNDING
+		dataType: string
+		lineageTag: 79db3105-eddf-4bb6-9d95-9923342f9d5e
+		summarizeBy: none
+		sourceColumn: TYPE_OF_FUNDING
+
+		annotation SummarizationSetBy = Automatic
+
+	column Spons_Source
+		dataType: string
+		lineageTag: 3938ed7f-5958-45c5-8d4d-f213bce7a25c
+		summarizeBy: none
+		sourceColumn: Spons_Source
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MDS_SPONSORSHIP = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_UKI_ANL_WH",[Implementation="2.0", Role="PRD_UKI_USER"]){[Name="PRD_UKI"]}[Data], "SELECT * FROM PRD_UKI.UKI_DSP_SNU.CONTRACT_PNL_SPONSORSHIP", null, [EnableFolding=true]),
+				    #"Added Custom" = Table.AddColumn(Source, "Spons_Source", each "MDS_SPONSORSHIP"),
+				    #"Appended Query" = Table.Combine({#"Added Custom", MDS_CPD})
+				in
+				    #"Appended Query"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,123 @@
+table Generic_Measures
+	lineageTag: 8f16941c-ce16-46db-92da-41616c42e5eb
+
+	measure Title_CY =
+			
+			
+			--& SELECTEDVALUE(DIM_MEDICAL_CONTRACT_R[CONTRACT_R_NAME])
+			Var MedicalContract = if(ISFILTERED(DIM_MEDICAL_CONTRACT_R[CONTRACT_R_NAME]),CALCULATE(CONCATENATEX(DIM_MEDICAL_CONTRACT_R,DIM_MEDICAL_CONTRACT_R[CONTRACT_R_NAME],", ")),"All Medical Contracts")
+			
+			RETURN
+			
+			"Apr-24 to Mar-25 Report - "& MedicalContract
+		lineageTag: 0a4f33d8-b6bd-4c75-9876-3712e1b2628c
+
+	measure Total_Volume = CALCULATE(SUM('P&L_Query'[MEASURE_VALUE]),'P&L_Query'[MEASURE_NAME]="Volumes_in_Units")
+		lineageTag: 86a70b9d-1e77-4e1a-8c43-18ee582979da
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Measure_col = IF(SELECTEDMEASURE() < 0, "#ef233c","#000000")
+		lineageTag: 9a201a21-b0ec-4385-87b5-9b8141e6eeb8
+
+	measure PoundSymbol = "( "&UNICHAR(163)&" )"
+		lineageTag: 553dab8e-1a6b-4bff-a5ad-03182df70779
+
+	measure 'Avg Selling Price' = DIVIDE(SUM('P&L_Pivot'[INVOICED_SALES]),sum('P&L_Pivot'[VOLUMES_IN_UNITS]),0)
+		lineageTag: c51be42d-860b-4a75-9e0e-3045ce329722
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Total_Net_Sales = [NetSales_Hospital] + [NetSales_Homeward] + [NetSales_Community]
+		lineageTag: 386405ec-5868-416f-ba37-5916c08ec532
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure NetSales_Rank(Top) =
+			
+			Var _rank = RANKX(ALL(DIM_MEDICAL_CONTRACT_R),[Total_Net_Sales],,DESC,Dense)
+			RETURN
+			IF(_rank <='Ranking Option'[Ranking Option Value], [Total_Net_Sales])
+		lineageTag: ae3817f4-86e9-4ba4-b29e-16e1ed297268
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure NetSales_Rank(Bottom) = ```
+			
+			Var _rank = RANKX(ALL(DIM_MEDICAL_CONTRACT_R),[Total_Net_Sales],,ASC,Dense)
+			RETURN 
+			IF(_rank <='Ranking Option'[Ranking Option Value], [Total_Net_Sales])))
+			```
+		lineageTag: 90b99e9c-7e6b-45a5-bb9c-7c361fa2468f
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure NetSale_Rank(T/B) =
+			
+			Var T_rank = RANKX(ALL(DIM_MEDICAL_CONTRACT_R),[Total_Net_Sales],,DESC,Dense)
+			Var B_rank = RANKX(ALL(DIM_MEDICAL_CONTRACT_R),[Total_Net_Sales],,ASC,Dense)
+			VAR RankSelect = if(SELECTEDVALUE(Rank_Option[Value]) = "Top",T_rank,B_rank)
+			RETURN
+			IF(RankSelect <='Ranking Option'[Ranking Option Value], [Total_Net_Sales])
+		lineageTag: f820e4a2-866e-430a-8609-063998afa49e
+
+		formatStringDefinition = SELECTEDVALUE(Currency_Table[Symbol]) & " #,0"
+
+	measure Null = " "
+		lineageTag: 3079fc42-853b-4c3e-9589-5165bdd904f4
+
+	measure Contribution%_CT_Rank(Top) =
+			
+			Var _rank = RANKX(ALL(DIM_MEDICAL_CONTRACT_R),[Contribution(%)_ContractTotal],,DESC,Dense)
+			RETURN
+			IF(_rank <='Ranking Option'[Ranking Option Value], [Contribution(%)_ContractTotal])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 600fd885-463f-4a20-b947-1f29990f1b5c
+
+	measure Contribution%_CT_Rank(Bottom) =
+			
+			Var _rank = RANKX(ALL(DIM_MEDICAL_CONTRACT_R),[Contribution(%)_ContractTotal],,ASC,Dense)
+			RETURN
+			IF(_rank <='Ranking Option'[Ranking Option Value], [Contribution(%)_ContractTotal])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ad6dae6d-1b96-4c64-979d-afc0620286fa
+
+	measure Contribution%_TOT_Rank(Bottom) =
+			
+			Var _rank = RANKX(ALL(DIM_MEDICAL_CONTRACT_R),[Contribution(%)_Totals],,ASC,Dense)
+			RETURN
+			IF(_rank <='Ranking Option'[Ranking Option Value], [Contribution(%)_Totals])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0d6bb1f3-9d2d-44bd-a88b-ce39991f65ca
+
+	measure Contribution%_TOT_Rank(Top) =
+			
+			Var _rank = RANKX(ALL(DIM_MEDICAL_CONTRACT_R),[Contribution(%)_Totals],,DESC,Dense)
+			RETURN
+			IF(_rank <='Ranking Option'[Ranking Option Value], [Contribution(%)_Totals])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7e4995c3-c9c4-4a36-81b1-2831af6a50fe
+
+	measure Total_Net_sale>0 = IF([Total_Net_Sales]>0,[Total_Net_Sales])
+		lineageTag: 19fb8d25-a9ae-4f93-84f4-9649a8d1989e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Contract Name NB' = VALUES(Contracts[Contract grouping])
+		lineageTag: f11e7f00-08a9-43dc-a579-47b62364bd10
+
+	partition Generic_Measures = m
+		mode: import
+		queryGroup: Measures
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

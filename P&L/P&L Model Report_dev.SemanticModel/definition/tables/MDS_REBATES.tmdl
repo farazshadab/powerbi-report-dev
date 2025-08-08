@@ -1,0 +1,131 @@
+table MDS_REBATES
+	lineageTag: f477e0e1-b2f0-4b3e-836c-95e13d8ff617
+
+	column CODE
+		dataType: string
+		lineageTag: 82178002-7165-4896-9b13-8f58b302c0c2
+		summarizeBy: none
+		sourceColumn: CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column YEAR
+		dataType: double
+		lineageTag: 5bef6891-8c64-4c84-84b3-5a758e730269
+		summarizeBy: sum
+		sourceColumn: YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTRACT
+		dataType: string
+		lineageTag: 37244820-76b3-42b1-aeb9-f8f7a27b951d
+		summarizeBy: none
+		sourceColumn: CONTRACT
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACTIVE
+		dataType: string
+		lineageTag: 6308b541-8622-42db-bc7d-7723bcde8fa3
+		summarizeBy: none
+		sourceColumn: ACTIVE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ORIGINAL_CONTRACT
+		dataType: string
+		lineageTag: a0da9d8c-cdbf-4fcf-a808-acb9f70a36d7
+		summarizeBy: none
+		sourceColumn: ORIGINAL_CONTRACT
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROPOSED_CONTRACT
+		dataType: string
+		lineageTag: 799000a8-aece-4d2d-9c45-b6eae410e296
+		summarizeBy: none
+		sourceColumn: PROPOSED_CONTRACT
+
+		annotation SummarizationSetBy = Automatic
+
+	column RBM
+		dataType: string
+		lineageTag: 87336325-29d6-44a9-9ba6-49b0b1ab1431
+		summarizeBy: none
+		sourceColumn: RBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column SCM
+		dataType: string
+		lineageTag: f57ad8f4-20ff-46e6-b061-c866486d8ece
+		summarizeBy: none
+		sourceColumn: SCM
+
+		annotation SummarizationSetBy = Automatic
+
+	column CAM
+		dataType: string
+		lineageTag: 38558e38-e83a-4da5-a8ea-825995451e4c
+		summarizeBy: none
+		sourceColumn: CAM
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_HOLDER
+		dataType: string
+		lineageTag: 7a6e746b-ea4f-479b-b4e8-4515e90c3c13
+		summarizeBy: none
+		sourceColumn: CONTRACT_HOLDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_TYPE
+		dataType: string
+		lineageTag: ec7057d9-dd84-4999-911f-54a655f0ba56
+		summarizeBy: none
+		sourceColumn: CONTRACT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEFINITION
+		dataType: string
+		lineageTag: 1c8ea042-45f0-4532-8f1e-c958dd7223d2
+		summarizeBy: none
+		sourceColumn: DEFINITION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CATEGORY
+		dataType: string
+		lineageTag: 4d4fcd9f-d58b-4000-a142-65ba22efc241
+		summarizeBy: none
+		sourceColumn: CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANNUAL_VALUE
+		dataType: double
+		lineageTag: f6574e4b-9efa-45c8-a581-fa7c2e3d095e
+		summarizeBy: sum
+		sourceColumn: ANNUAL_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MDS_REBATES = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_UKI_ANL_WH",[Implementation="2.0", Role="PRD_UKI_USER"]){[Name="PRD_UKI"]}[Data], "SELECT * from#(lf)PRD_UKI.UKI_DSP_SNU.CONTRACT_PNL_REBATES", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,4655 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/1.4.0/schema.json",
+  "displayName": "Summary Report Collapse",
+  "name": "fe39dd9ed7a5093d7ea3",
+  "options": {
+    "targetVisualNames": [],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "85f23457306323bbbada",
+    "filters": {
+      "byExpr": [
+        {
+          "name": "350d8a717906cf199535",
+          "type": "Categorical",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "d",
+                "Entity": "DIM_PRODUCT_HIER_LOCAL_2",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Not": {
+                    "Expression": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "d"
+                                }
+                              },
+                              "Property": "Local 2"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'MILKS'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "DIM_PRODUCT_HIER_LOCAL_2"
+                }
+              },
+              "Property": "Local 2"
+            }
+          },
+          "howCreated": 1
+        },
+        {
+          "name": "750a26070e50c7e09beb",
+          "type": "Categorical",
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "DIM_PRODUCT_HIER_LOCAL_5"
+                }
+              },
+              "Property": "Local 5"
+            }
+          },
+          "howCreated": 1
+        }
+      ]
+    },
+    "sections": {
+      "85f23457306323bbbada": {
+        "filters": {
+          "byExpr": [
+            {
+              "name": "01240feba8181ea6c9c0",
+              "type": "Categorical",
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCT_HIER_LOCAL_5"
+                    }
+                  },
+                  "Property": "Local 5"
+                }
+              },
+              "howCreated": 1
+            }
+          ]
+        },
+        "visualContainers": {
+          "e664addcb6a9876a4e8e": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "87d0c955addc009519d6": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "2aa395f491e6171e755b",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT_HIER_LOCAL_6"
+                        }
+                      },
+                      "Property": "Local 6"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT_HIER_LOCAL_6"
+                        }
+                      },
+                      "Property": "Local 6"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "5391181d25d6735277c5": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "51508b33758848e50700",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT"
+                        }
+                      },
+                      "Property": "SKU"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT"
+                        }
+                      },
+                      "Property": "SKU"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "dd03901632a56a5ae5e7": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "ccedd050c080424e2da5",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_MEDICAL_CONTRACT_R"
+                        }
+                      },
+                      "Property": "CONTRACT_R_NAME"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_MEDICAL_CONTRACT_R"
+                        }
+                      },
+                      "Property": "CONTRACT_R_NAME"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "7464500a1be51105c956": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b26ae81f094c59419802",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT"
+                        }
+                      },
+                      "Property": "Product"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT"
+                        }
+                      },
+                      "Property": "Product"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "fe083dc72e978db7c485": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "91252fd3120cb5028eb0": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "61e16b7c234ce91200c2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "06688f8c0037c07ab1a8",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT_HIER_LOCAL_2"
+                        }
+                      },
+                      "Property": "Local 2"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT_HIER_LOCAL_2"
+                        }
+                      },
+                      "Property": "Local 2"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "4edb4c5f39aeeaa566ec": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7286b4a6cae9b999ad10",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT_HIER_LOCAL_3"
+                        }
+                      },
+                      "Property": "Local 3"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT_HIER_LOCAL_3"
+                        }
+                      },
+                      "Property": "Local 3"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "141f256820b27dc33147": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "38ff6c9fae1279050a81",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT_HIER_LOCAL_4"
+                        }
+                      },
+                      "Property": "Local 4"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT_HIER_LOCAL_4"
+                        }
+                      },
+                      "Property": "Local 4"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "79197cb931a2b39d0b15": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "256e24677e21a3379506",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_GEO_TERRITORY"
+                        }
+                      },
+                      "Property": "Enteral RBM 2023"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_GEO_TERRITORY"
+                        }
+                      },
+                      "Property": "Enteral RBM 2023"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "a2d76188b11bb2a4773e": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "6e020d22d6a7ca200c83",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT_HIER_LOCAL_5"
+                        }
+                      },
+                      "Property": "Local 5"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT_HIER_LOCAL_5"
+                        }
+                      },
+                      "Property": "Local 5"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "921457e445cc60b90472": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d78ffc00e10660a13093",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_MEDICAL_CONTRACT"
+                        }
+                      },
+                      "Property": "Medical Contract"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "d",
+                                "Entity": "DIM_MEDICAL_CONTRACT",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "d"
+                                            }
+                                          },
+                                          "Property": "Medical Contract"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Scarborough and North East Yorks Healthcare Trust'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_MEDICAL_CONTRACT"
+                        }
+                      },
+                      "Property": "Medical Contract"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "d2fa3fe8ee7b0874dcc0": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "6698debd80a1e0d5922a": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "a713c268649bdc1e0348": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "58870f33b207e80351d4": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5e0ad71d6239e8270bd1",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Currency_Table"
+                        }
+                      },
+                      "Property": "Currency"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "c",
+                                "Entity": "Currency_Table",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "c"
+                                            }
+                                          },
+                                          "Property": "Currency"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'GBP'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Currency_Table"
+                        }
+                      },
+                      "Property": "Currency"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "839fe9c8b6d2ec2bac06": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1d38543a68c00ed0d996",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Volume_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Volume_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "3eb2ed5431819d52d321": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d143d3e0e4371510b45d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Volume_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Volume_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "07bb58522011be0ccc3c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "fc8015fd7c221c06dabd",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Volume_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Volume_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "39cce760bdedcc310ab2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5498456ac15b8513e34c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "FP10_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "FP10_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "ca9d3a90a14891cd00c2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c75964fb67a16d8897a6",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "FP10_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "FP10_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "5ce1b7110185830aa10d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "2a1ee3501a904a3acba4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "FP10_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "FP10_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "552f84baba520cddb925": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "29a054170769badb0403",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Discount_FP10_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Discount_FP10_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "1c8b14066629c819d367": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "729cc6e089e960a0a64b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Discount_FP10_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Discount_FP10_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "3d84a254a42cb4ec2531": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3683a04d42275c3c6ee4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Discount_FP10_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Discount_FP10_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "22b382570988b42d6c56": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "60806946000b3e02be70",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Disc%_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Disc%_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "e3c6b375a9e501dca7ad": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e0f9940b604bd6c9cdec",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Disc%_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Disc%_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "4377ff2300ac9123e73a": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d2d07be6459493bdcc30",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Disc%_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Disc%_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "1d866b88a80880d12dd8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "bd502491a2718e166184",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "NetSales_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "NetSales_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "a9328c4d0c0607b02c30": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "ee352abc00d2a7029d64",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "NetSales_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "NetSales_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "92907bfd0ab79e6112ab": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8188134a39510e463218",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "NetSales_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "NetSales_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "fa502a6559d7c1794e20": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "6659f5260dd01aa8da1a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "NetSales_Community"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "NetSales_Community"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "2d7d8500ca78d4500d47": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4caa56ab40b5da917988",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "NetSales_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "NetSales_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "447defd1d5374cc7e83d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "38a4d74300ad0a04564b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Rebate_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Rebate_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "ef9ae58787319d51ebae": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "2b2a9c1d1184831ae8b4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Rebate_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Rebate_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "4b674ea018d0d53d5439": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "61b7b6e64672c8903ac0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Rebate_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Rebate_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "051d322a96a053084496": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "14158c06d00b062960c9",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "Rebate_Community"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "Rebate_Community"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "4883c4d5301dd20cb17c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c10c110b2778e8d32550",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Rebate_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Rebate_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "b59e4996855082cdaa78": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5e4f66a5c19711c1053a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "COGs_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "COGs_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "8910bab6961709981391": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8216e16c3a0db00ee05c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "COGs_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "COGs_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "e5c9325e7417ee1cbdb0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "465a9cb1c320270b20bd",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "COGs_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "COGs_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "6d339fb19057a9e08e33": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7b5fac5d019da010e500",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "COGs_Community"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "COGs_Community"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "d38dda2cd5669b15b95b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "dde47d5a6e4d74333e26",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "COG_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "COG_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "d9ce052214c400c399c1": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "16a4914624bea0293bc7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Distribution_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Distribution_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "729ffb3289a963346aa7": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "74991dfb199de9cbad9a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Distribution_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Distribution_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "da1362daeb1120d653a3": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "18b1b8034016d4c6b935",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Distribution_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Distribution_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "68c6d646c96ca0a1ae30": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f2147f2bc15190aab833",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "Distribution_Community"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "Distribution_Community"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "8c75636db178689d3832": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1f3001d1d95991538b00",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Distribution_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Distribution_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "3a2fcfc84a3a04b05bcb": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8d8e9cc3a9bc68cde6cd",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "195dd8664ed56c27e555": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "94cd448ecddac079e70c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "2103c2e80e530db6b0c7": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3ce8256f3cdc7e9ccda7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "5114bd0c6564aca6a23d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4754248bb5c3967c650b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit_Community"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit_Community"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "3f9181575764e31cd3bd": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f356219f22c038a7a344",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "b23c0c565000a5b20818": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b988268a8a957c87e235",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit(%)_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit(%)_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "aee562e751cac06cb51c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b708eb41ee8dd6d19a82",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit(%)_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit(%)_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "f2daa5c2c17b513ed958": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "495cce3c404d484db276",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit(%)_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit(%)_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "1550f335126ed0524b27": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "0c0ee1440284d4306873",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit(%)_Community"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit(%)_Community"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "769d30109b499d02e96d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "a23c67cb89d237e55b91",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit(%)_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "GrossProfit(%)_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "884036d53e135bac6a07": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "069a3e63b30b57aa689b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Hospital_Sponsorshp"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Hospital_Sponsorshp"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "356eba7ad1bc061993a8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "2f7d09cfe3b8a22e9031",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Homeward_Sponsorshp"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Homeward_Sponsorshp"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "4c5aabae37da53268ab4": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b544347653ed1a12196b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Sponsorship_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Sponsorship_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "0962278925b3eae90bd5": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "78cd40e160b7135bb5b3",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "Community_Sponsrship"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "Community_Sponsrship"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "631ee313dce10e48253e": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c770f0009a06d84d8c21",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Sponsrship_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Sponsrship_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "c81de43d70ab1cbc3bde": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c44367a709778a041777",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Pump_Volume_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Pump_Volume_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "7267bf67b23e0d81c11c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "147d7a2a621a0d3e8e8e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Pump_Volume_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Pump_Volume_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "c68b80e0a147b2585078": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "bf0fa4ace030a4e40db1",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "PatientNumber_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "PatientNumber_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "2907ee0c7a7cabb37566": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "96104ba771bb6d41106d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "NetSales/Patient_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "NetSales/Patient_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "0404336c44382642c8c9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "ec9822097a01946d9504",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Margin_Patient"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Margin_Patient"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "121da0d2e8adcd427e05": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "a188545f75762a35d2dc",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "NS/Unit_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "NS/Unit_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "7faa88316be760425eca": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "9ecf0469de505a83e795",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Cogs/Unit_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Cogs/Unit_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "0bac706641122b051d63": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c3ee96f3a37b504b35de",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "NS/Unit_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "NS/Unit_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "cfd6e2c4ec7db11c4007": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f639f0ab06101b053eb6",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Cogs/Unit_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Cogs/Unit_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "464d9db62dcec076a7c4": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1b6136a9a9ae08e000a1",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "NS/Unit_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "NS/Unit_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "6b3a9ea94a0bab1db0d3": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "dfbd843209637a2706c2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "NS/Unit_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "NS/Unit_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "8290bb6fe45c48e4a229": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "42921587a2ea020a3ba5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Cogs/Unit_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Cogs/Unit_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "89cc7abf0ed70ec85a8c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "adc0aa8bb5456d80e770",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Nurses_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Nurses_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "fd44d96fae7a32679b8b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "529f2eb5903a5545287a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Nurses_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Nurses_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "bedfb5429b44271a3ec9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "954c83e092a5cd1e8aa1",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Nurses_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Nurses_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "710ebaa30d21471e8bd6": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e03e177ac0b3ed6b2c09",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Contribution_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Contribution_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "15ea275965d8ec988bdd": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b80338aa9d3a303d8c50",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Contribution_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Contribution_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "00a5b0e4e07d39acc30b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1cf5206e35ba805e927c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "Contribution_Community"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "Contribution_Community"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "838e478caba26366a01e": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "899a8237caddbdc89abc",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Contribution_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Contribution_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "630c467840a04b46d582": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d80cdae1230d0ce7b608",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Contribution_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Contribution_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "c09ab4ef3066060ebe71": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4916abc0481d0c294557",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "PumpDep'n_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "PumpDep'n_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "18f09be0bd5e634433a1": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e8c79f14a090b134d10e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "PumpDep'n_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "PumpDep'n_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "c3b982d619b93a39a7e1": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7c9097a59a2cbb8d95be",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "PumpDep'n_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "PumpDep'n_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "a87955e652302412c4dc": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "563678b30b0808eb4712",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "PumpDep'n_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "PumpDep'n_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "6fb3af3107d9a8e12376": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5b535e0c2560b107d727",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Pump_Servicng_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Pump_Servicng_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "86a55d104619837e3123": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "2300985b561ae72e01b4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Pump_Servicing_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Pump_Servicing_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "2d802b664073c154c200": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "356dec50d52ab1384b77",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Pump_Servicing_Contracttotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Pump_Servicing_Contracttotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "23a2e97c49964e7037b8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "6faf915f3ac8a5c3b095",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Pump_Servicing_Contracttotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Pump_Servicing_Contracttotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "bb8566cf002ea2074d22": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f53b6a2103eed960230e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Contribution(%)_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Contribution(%)_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "ecc72c253e5d9c3c452d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "28fe0af4205565a07b76",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Contribution(%)_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Contribution(%)_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "afbac2301d812ec5caa9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3c893cce21abc50160aa",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Contribution(%)_ContractTotal"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Contribution(%)_ContractTotal"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "3d07fb2fed132b500503": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c8a4a11504d39321d32d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "Contribution(%)_Community"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Community_Measures"
+                        }
+                      },
+                      "Property": "Contribution(%)_Community"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "087b17c3ca240a7976b0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d9db629a3a130b40d868",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Contribution(%)_Totals"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Contribution(%)_Totals"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "c99fdddda77b53edb73d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e5f8dee571ea00ae83ca",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Customer_Service_Cost_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Customer_Service_Cost_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "74cca99205042c8e8ece": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f7cf665a5b9e2dbe0653",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Customer_Service_Cost_CT"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Customer_Service_Cost_CT"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "2381113708d017542e9d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1d9650a0270eadc6b872",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Customer_Service_Cost_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Customer_Service_Cost_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "65b6b87136ca40c48a08": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "42238290a609816ece70",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Others_Hospital"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Hospital_Measures"
+                        }
+                      },
+                      "Property": "Others_Hospital"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "c6523382a028c77a81d5": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "debcfdf751c7300cbcec",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Others_Homeward"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Homeward_Measures"
+                        }
+                      },
+                      "Property": "Others_Homeward"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "bdb289c15578840d9022": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "32bf106c78a5b903191d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Others_CT"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ContractTotal_Measures"
+                        }
+                      },
+                      "Property": "Others_CT"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "5aca3e85ceb95a8a0046": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4e8c7d509058d0e08a9e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Others_Totals"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Others_Totals"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "af9eb5aa0e86a7740008": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "0f3afc895e870871912e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Volume_Totals"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Volume_Totals"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "850684d3e9213e031e72": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "0e7a31f9311450615b95",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "FP10_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "FP10_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "f8a6a7644088be100772": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d8f74250123097d39aac",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Discount_FP10_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Discount_FP10_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "578c98505707db3ab6ba": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "78500e8a8c02d0a39587",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Disc%_Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Total_Measures"
+                        }
+                      },
+                      "Property": "Disc%_Total"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "28e8dde6c87a2600d13a": {
+            "isHidden": true
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

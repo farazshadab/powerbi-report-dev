@@ -1,0 +1,797 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/1.4.0/schema.json",
+  "displayName": "Pump TS Expand",
+  "name": "366604d156cfc8ef9f03",
+  "options": {
+    "targetVisualNames": [],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "857b840dcde24c4911e0",
+    "filters": {
+      "byExpr": [
+        {
+          "name": "6c51a32c9d064ca79aa1",
+          "type": "Categorical",
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "DIM_MEDICAL_CONTRACT_R"
+                }
+              },
+              "Property": "CONTRACT_R_NAME"
+            }
+          },
+          "howCreated": 1
+        }
+      ]
+    },
+    "sections": {
+      "857b840dcde24c4911e0": {
+        "visualContainers": {
+          "25453eb2151317610b5c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "2e889c4b56c90d2963ba",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "SOURCE"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "79bfa241b0d7908c9a00",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "PRODUCT_ID"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8f99cbc0ac0c9b20bdd1",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "PRODUCT_CODE"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "640b4eef0b5b2a002876",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "PUMP_DATE"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f7be402d92a450d6c3b7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "INCLUDE_EXCLUDE"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c1fb970e99770a1c3146",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "PUMP_MODEL"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "cba7b78ad6c938a00112",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT"
+                        }
+                      },
+                      "Property": "Product"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9a196c1c7988d2d7179d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "Pump_Count_New"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6d0d778945bbada35000",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "Pump_In_Service_Count_New"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f0ad87779e300326d801",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "Pump_Not_In_Service_Count_New"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "Pump_Count_New"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "10ab9996549b22702e3d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "411113fb27b2c860978b",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "SOURCE"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "p",
+                                "Entity": "Pump_Pivot",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "p"
+                                            }
+                                          },
+                                          "Property": "SOURCE"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'HOSPITAL_PUMP'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "SOURCE"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "97943fd191732c158600": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5a34b0ef0c31c7171900",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "INCLUDE_EXCLUDE"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "INCLUDE_EXCLUDE"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "b202ed0530abd04b5813": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "efe9115246e017961991",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "PUMP_MODEL"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Pump_Pivot"
+                        }
+                      },
+                      "Property": "PUMP_MODEL"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "4fa166a82471204a7239": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "c1e5a086165e8b29c698": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "57e198aea8e003527e59",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT"
+                        }
+                      },
+                      "Property": "SKU"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT"
+                        }
+                      },
+                      "Property": "SKU"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "142b7238fcb7632c81c5": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "008e3bc3ab0a9eb36eb9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_MEDICAL_CONTRACT_R"
+                        }
+                      },
+                      "Property": "CONTRACT_R_NAME"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "d",
+                                "Entity": "DIM_MEDICAL_CONTRACT_R",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "In": {
+                                    "Expressions": [
+                                      {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "d"
+                                            }
+                                          },
+                                          "Property": "CONTRACT_R_NAME"
+                                        }
+                                      }
+                                    ],
+                                    "Values": [
+                                      [
+                                        {
+                                          "Literal": {
+                                            "Value": "'Airedale'"
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_MEDICAL_CONTRACT_R"
+                        }
+                      },
+                      "Property": "CONTRACT_R_NAME"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "815c66416312e5c3b53d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3aac355c1d6cca56b238",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT"
+                        }
+                      },
+                      "Property": "Product"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCT"
+                        }
+                      },
+                      "Property": "Product"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "65cf7c2297792ebc10f0": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "d7efe0caa9d9ab56e1a3": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "85c3c2a6193809cc3314": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "431559c1244919589e58",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_MEDICAL_CONTRACT"
+                        }
+                      },
+                      "Property": "Medical Contract"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_MEDICAL_CONTRACT"
+                        }
+                      },
+                      "Property": "Medical Contract"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "6377ce953efea142ff95": {
+            "isHidden": false
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

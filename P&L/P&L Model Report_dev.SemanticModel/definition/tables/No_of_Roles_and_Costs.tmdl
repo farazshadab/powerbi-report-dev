@@ -1,0 +1,70 @@
+table No_of_Roles_and_Costs
+	lineageTag: 2cf03ba1-c47e-4bb6-9170-307df8769f6d
+
+	measure Regional_Lead_roles = [PatientNumber_Homeward]/7000
+		lineageTag: 316eebb2-f825-4c86-8193-85efdde6a1f3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Patient_co-ordinators_roles = [PatientNumber_Homeward]/350
+		lineageTag: 8ec50d87-4779-4e40-b879-c1a991def6d2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Patient_co-ordinators_cost = ```
+			[Patient_co-ordinators_roles] * 31610 
+			```
+		lineageTag: 57cafc71-4617-4664-89a5-63b66743825f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Regional_Lead_cost = [Regional_Lead_roles] * 68935
+		lineageTag: 8a3f0e2c-77eb-4b24-8351-e6cf728f759d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Team_Leader_roles = [Patient_co-ordinators_roles]/18
+		lineageTag: 1fa4423a-2821-4cdb-8fd1-dbc4ae48b17e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Team_Leader_cost = [Team_Leader_roles] * 42022
+		lineageTag: c9fbe86b-e0c9-4644-ac6e-e31df0f869bf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Prescription_co-ordinator_roles = [PatientNumber_Homeward]/1000
+		lineageTag: 3bf2d3e3-f7f4-478e-a3b7-d8e90165f1df
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Prescription_co-ordinator_cost = [Prescription_co-ordinator_roles] * 31610
+		lineageTag: feaa5002-87f5-451f-8a98-077be9698ae7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RMDCs_roles = ([Pump_Volume_Hospital] + [Pump_Volume_Homeward])/3000
+		lineageTag: 3b2f7c2f-8d34-4d88-b5d1-162a35c22311
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RMDCs_cost = [RMDCs_roles] * 0
+		lineageTag: 04ba5c0b-cc61-4fe4-b4e5-5d8039ef863a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		isHidden
+		lineageTag: 9fbc8898-be3c-4fbe-837d-a1c01a4c48b6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition No_of_Roles_and_Costs = calculated
+		mode: import
+		source = {""}
+
+	annotation PBI_Id = 4e264e2174a940b492c1f252330f4c8d
+

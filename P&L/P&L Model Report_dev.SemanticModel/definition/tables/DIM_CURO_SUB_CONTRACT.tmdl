@@ -1,0 +1,33 @@
+table DIM_CURO_SUB_CONTRACT
+	lineageTag: 48a01285-15df-47ed-ac89-142bd96f7ce0
+
+	column CURO_SUB_CONTRACT_ID
+		dataType: double
+		lineageTag: e268ac52-e905-4f9d-ae16-6176665505e7
+		summarizeBy: count
+		sourceColumn: CURO_SUB_CONTRACT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SUB_CONTRACT_NAME
+		dataType: string
+		lineageTag: 9eb13135-8a79-4abe-9b6c-bdf8c488838b
+		summarizeBy: none
+		sourceColumn: SUB_CONTRACT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_CURO_SUB_CONTRACT = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Role="PRD_SNS_UKI_USER"]){[Name="PRD_SNS_UKI"]}[Data], "with cte as(#(lf)select src_id, CURO_SUB_CONTRACT_ID, SUB_CONTRACT_NAME FROM PRD_SNS_UKI.SNS_UKI_DSP_SNU.DIM_CURO_SUB_CONTRACT#(lf)where SRC_ID not in #(lf)(#(lf)'a4a2400000002ahAAA',#(lf)'a4a2400000002amAAA',#(lf)'a4a240000008oxLAAQ',#(lf)'a4a240000008oxQAAQ',#(lf)'a4a4L000000QFngQAG',#(lf)'a4a2400000002b7AAA',#(lf)'a4a2400000002b9AAA',#(lf)'a4a1p000000GtsvAAC',#(lf)'a4a2400000002bBAAQ',#(lf)'a4a2400000002bGAAQ',#(lf)'a4a2400000002bKAAQ',#(lf)'a4a240000008oxaAAA',#(lf)'a4a2400000002bSAAQ',#(lf)'a4a4J000000yDBqQAM',#(lf)'a4a4J000000yDBCQA2',#(lf)'a4a2400000002bWAAQ',#(lf)'a4a4J000000yDBHQA2',#(lf)'a4a2400000002bbAAA',#(lf)'a4a4J000000yD7eQAE',#(lf)'a4a2400000002bdAAA',#(lf)'a4a2400000002bfAAA',#(lf)'a4a4J000000yDC0QAM',#(lf)'a4a2400000002bnAAA',#(lf)'a4a2400000002bpAAA',#(lf)'a4a4J000000yDBbQAM',#(lf)'a4a240000008QXdAAM',#(lf)'a4a2400000002bsAAA',#(lf)'a4a2400000002buAAA',#(lf)'a4a2400000002dnAAA',#(lf)'a4a2400000002doAAA',#(lf)'a4a2400000002bwAAA',#(lf)'a4a4J000000yD8cQAE',#(lf)'a4a4J000000yDBSQA2',#(lf)'a4a2400000002byAAA',#(lf)'a4a2400000002b2AAA',#(lf)'a4a240000008QVrAAM',#(lf)'a4a2400000002c0AAA',#(lf)'a4a4L000000KjepQAC',#(lf)'a4a4J000000yD9VQAU',#(lf)'a4a4J000000yDB2QAM',#(lf)'a4a4L000000EYICQA4',#(lf)'a4a2400000002c2AAA',#(lf)'a4a2400000002c8AAA',#(lf)'a4a4J000000yDBDQA2',#(lf)'a4a4J000000yDBMQA2',#(lf)'a4a4J000000yDBlQAM',#(lf)'a4a2400000002cBAAQ',#(lf)'a4a2400000002cDAAQ',#(lf)'a4a240000008oxBAAQ',#(lf)'a4a240000008QL8AAM',#(lf)'a4a240000008ox6AAA',#(lf)'a4a240000008QL3AAM',#(lf)'a4a240000008oxGAAQ',#(lf)'a4a240000008QKeAAM',#(lf)'a4a240000008QKZAA2',#(lf)'a4a2400000002djAAA',#(lf)'a4a240000008QKoAAM',#(lf)'a4a240000008QKjAAM',#(lf)'a4a240000008oxkAAA',#(lf)'a4a4J000000yD8SQAU',#(lf)'a4a4J000000yD7jQAE',#(lf)'a4a4J000000yDATQA2',#(lf)'a4a4J000000yDA9QAM',#(lf)'a4a1p0000008oynAAA',#(lf)'a4a2400000002caAAA',#(lf)'a4a2400000002ccAAA',#(lf)'a4a2400000002ceAAA',#(lf)'a4a2400000002l7AAA',#(lf)'a4a4L000000EYmqQAG',#(lf)'a4a2400000002cgAAA',#(lf)'a4a2400000002ciAAA',#(lf)'a4a2400000002cuAAA',#(lf)'a4a2400000002czAAA',#(lf)'a4a4J000000yD8NQAU',#(lf)'a4a4J000000yDBRQA2',#(lf)'a4a4J000000yDBWQA2',#(lf)'a4a4J000000yDBvQAM',#(lf)'a4a4J000000yDAnQAM',#(lf)'a4a2400000002dDAAQ',#(lf)'a4a4J000000yD8XQAU'#(lf)#(lf)))#(lf)#(lf)select CURO_SUB_CONTRACT_ID, SUB_CONTRACT_NAME from cte where#(lf)src_id not in('a4a240000008oxaAAA','a4a240000008oxBAAQ') --NHS BORDERS and CALDERDALE & HUDDERSFIELD NHSFT", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

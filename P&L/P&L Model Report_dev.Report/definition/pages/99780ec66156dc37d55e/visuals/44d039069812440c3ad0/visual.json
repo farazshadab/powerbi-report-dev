@@ -1,0 +1,293 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "44d039069812440c3ad0",
+  "position": {
+    "x": 20,
+    "y": 306.66666666666669,
+    "z": 0,
+    "height": 617.77777777777771,
+    "width": 1235.5555555555554
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "P&L_Pivot"
+                    }
+                  },
+                  "Property": "SOURCE"
+                }
+              },
+              "queryRef": "P&L_Pivot.SOURCE",
+              "nativeQueryRef": "SOURCE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCT"
+                    }
+                  },
+                  "Property": "PROD_HIER_LOCAL_2_NAME"
+                }
+              },
+              "queryRef": "DIM_PRODUCT.PROD_HIER_LOCAL_2_NAME",
+              "nativeQueryRef": "PROD_HIER_LOCAL_2_NAME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "P&L_Pivot"
+                    }
+                  },
+                  "Property": "SKU"
+                }
+              },
+              "queryRef": "P&L_Pivot.PRODUCT_CODE",
+              "nativeQueryRef": "SKU",
+              "displayName": "SKU"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCT"
+                    }
+                  },
+                  "Property": "PRODUCT_DESCRIPTION"
+                }
+              },
+              "queryRef": "DIM_PRODUCT.PRODUCT_DESCRIPTION",
+              "nativeQueryRef": "PRODUCT_DESCRIPTION"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "P&L_Pivot"
+                    }
+                  },
+                  "Property": "Vol_Units_New"
+                }
+              },
+              "queryRef": "P&L_Pivot.Vol Units",
+              "nativeQueryRef": "Vol_Units_New"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "P&L_Pivot"
+                    }
+                  },
+                  "Property": "FP10_VALUE"
+                }
+              },
+              "queryRef": "P&L_Pivot.FP10_VALUE",
+              "nativeQueryRef": "FP10_VALUE"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "P&L_Pivot"
+                    }
+                  },
+                  "Property": "FP10_Price_New"
+                }
+              },
+              "queryRef": "P&L_Pivot.FP10_Price_New",
+              "nativeQueryRef": "FP10_Price_New"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "P&L_Pivot"
+                    }
+                  },
+                  "Property": "Invoiced_Sales_New"
+                }
+              },
+              "queryRef": "P&L_Pivot.InvoicedSales",
+              "nativeQueryRef": "Invoiced_Sales_New"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "P&L_Pivot"
+                    }
+                  },
+                  "Property": "Avg_Sel_Price_New"
+                }
+              },
+              "queryRef": "P&L_Pivot.avg_Sel_Price_New",
+              "nativeQueryRef": "Avg_Sel_Price_New"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "P&L_Pivot"
+                    }
+                  },
+                  "Property": "Std_Cogs_Hos_HW"
+                }
+              },
+              "queryRef": "P&L_Pivot.Std_Cogs",
+              "nativeQueryRef": "Std_Cogs"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "P&L_Pivot"
+                    }
+                  },
+                  "Property": "Cogs_Value_Hos_HW_Measure"
+                }
+              },
+              "queryRef": "P&L_Pivot.Cogs_Value_new",
+              "nativeQueryRef": "Cogs_Value_new"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "96D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "P&L_Pivot.InvoicedSales"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "97D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "P&L_Pivot.avg_Sel_Price_New"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "79D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "P&L_Pivot.Vol Units"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "P&L_Pivot.Cogs_Value_new"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "121.99999570174865D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "P&L_Pivot.PRODUCT_CODE"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "P&L_Pivot.SOURCE"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,199 @@
+table Cogs_Comm
+	lineageTag: 21fe7538-664f-4cbf-950f-c1d8f0a4dff1
+
+	column COMPANY_CODE
+		dataType: string
+		lineageTag: 7460ec3d-47ad-433c-871f-9a94a8f576e3
+		summarizeBy: none
+		sourceColumn: COMPANY_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SNU_PROD_HIER_LOCAL_6_ID
+		dataType: double
+		lineageTag: a934b5ad-4421-4584-a822-0e6628059799
+		summarizeBy: count
+		sourceColumn: SNU_PROD_HIER_LOCAL_6_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONVERSION_MULTIPLIER
+		dataType: double
+		lineageTag: 591ded88-5ab2-41c9-a1b4-2ca1cf30bbb3
+		summarizeBy: sum
+		sourceColumn: CONVERSION_MULTIPLIER
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column INVOICED_QTY_UNIT
+		dataType: double
+		lineageTag: 59b98b7f-4100-49ed-8c0c-1a0b6f5950b2
+		summarizeBy: sum
+		sourceColumn: INVOICED_QTY_UNIT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TOTAL_STD_COGS
+		dataType: double
+		lineageTag: bf46bfb5-0e7f-418e-949c-fb8156b529a3
+		summarizeBy: sum
+		sourceColumn: TOTAL_STD_COGS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column INV_QTY_CAS
+		dataType: double
+		lineageTag: 6e07f1e1-7660-4883-bbaa-1c31cde903d9
+		summarizeBy: sum
+		sourceColumn: INV_QTY_CAS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WEIGHTED_COGS_PER_UNIT
+		dataType: double
+		lineageTag: 234a8f25-9e71-4913-b38d-fc1cf7320f07
+		summarizeBy: sum
+		sourceColumn: WEIGHTED_COGS_PER_UNIT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PROD_HIER_LOCAL_6_NAME
+		dataType: string
+		lineageTag: 3c847d77-df17-4ba4-8ea0-2dc4100e05cd
+		summarizeBy: none
+		sourceColumn: PROD_HIER_LOCAL_6_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Cogs_Comm = m
+		mode: import
+		source = ```
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_UKI_ANL_WH",[Implementation="2.0", Role="PRD_UKI_USER"]){[Name="PRD_UKI"]}[Data], 
+				    
+				    "
+				    With MAX_MTH AS
+				(
+				SELECT 
+				TO_NUMBER(TO_VARCHAR(LAST_DAY(TO_DATE(MAX('202503')|| '01','YYYYMMDD')),'YYYYMMDD')) AS STARTDATE,
+				TO_NUMBER(TO_VARCHAR(ADD_MONTHS(TO_DATE(MAX('202503')|| '01','YYYYMMDD'),-11),'YYYYMMDD')) AS ENDDATE,
+				LAST_DAY(TO_DATE(MAX('202503')|| '01','YYYYMMDD'))::TIMESTAMP_TZ AS MONTHEND_TZ,
+				DATEADD(DAY,-1,LAST_DAY(TO_DATE(MAX('202503')|| '01','YYYYMMDD')))::TIMESTAMP_TZ AS MONTHEND_TZ1,
+				TO_DATE(MAX('202503')|| '01','YYYYMMDD')::TIMESTAMP_TZ AS MONTHSTART_TZ
+				)
+				,CTE AS
+				(
+				SELECT 
+				FT.COMPANY_CODE,
+				FT.PRODUCT_ID,
+				FT.MATERIAL_NUMBER AS SKU,
+				FT.MATERIAL_DESCRIPTION,
+				FT.MONTH_ID,
+				NVL(CON.CONVERSION_MULTIPLIER,1) AS CONVERSION_MULTIPLIER,
+				SUM(FT.INVOICED_QTY_UNIT) AS INVOICED_QTY_UNIT, 
+				SUM(FT.TOTAL_STD_COGS) AS TOTAL_STD_COGS,
+				SUM(FT.INV_QTY_CAS) AS INV_QTY_CAS
+				FROM (
+				    SELECT  
+				    D.COMPANY_CODE,
+				    A.PRODUCT_ID,
+				    H.MATERIAL_NUMBER,
+				    H.MATERIAL_DESCRIPTION,
+				    A.MONTH_ID,
+				    B.INDICATOR_NAME,
+				    -- SUM(A.MONTHLY_VALUE) VALUE,
+				    CASE WHEN UPPER(B.INDICATOR_NAME)='INV_QTY_UNITS' THEN SUM(A.MONTHLY_VALUE)
+				    ELSE 0 END AS INVOICED_QTY_UNIT,
+				    CASE WHEN UPPER(B.INDICATOR_NAME)='TOT_STD_COGS' THEN SUM(A.MONTHLY_VALUE)
+				    ELSE 0 END AS TOTAL_STD_COGS,
+				    CASE WHEN UPPER(B.INDICATOR_NAME)='INV_QTY_CAS' THEN SUM(A.MONTHLY_VALUE)
+				    ELSE 0 END AS INV_QTY_CAS
+				    FROM PRD_UKI.UKI_DSP_CBS.FACT_FINANCIAL_KPI A
+				    JOIN PRD_UKI.UKI_DSP_CBS.DIM_INDICATOR B ON (A.INDICATOR_ID=B.INDICATOR_ID)
+				    JOIN PRD_UKI.UKI_DSP_CBS.DIM_COMPANY D ON (A.COMPANY_ID=D.COMPANY_ID)
+				    JOIN PRD_UKI.UKI_DSP_CBS.DIM_MARKET E ON (A.MARKET_ID=E.MARKET_ID)
+				    JOIN PRD_UKI.UKI_DSP_CBS.DIM_PHASE F ON (A.PHASE_ID=F.PHASE_ID)
+				    JOIN PRD_UKI.UKI_DSP_CBS.DIM_CUSTOMER G ON (A.CUSTOMER_ID=G.CUSTOMER_ID)
+				    JOIN PRD_UKI.UKI_DSP_CBS.DIM_PRODUCT H ON (A.PRODUCT_ID=H.PRODUCT_ID)
+				    //LEFT OUTER JOIN PRD_UKI.UKI_STG_CBS.STG_MDS_LF_FINANCE_INDICATOR_GROUP I
+				    //ON (B.COMPANY_CODE= I.COMPANY_CODE AND B.INDICATOR_NAME=UPPER(I.INDICATOR_NAME)) -- this join is doubling the quantity 
+				    WHERE D.COMPANY_CODE IN ('4810')
+				    AND to_char(MONTH_ID * 100 + 1) >= (SELECT ENDDATE FROM MAX_MTH) AND to_char(MONTH_ID * 100 + 1) <= (SELECT STARTDATE FROM MAX_MTH) 
+				    -- A.MONTH_ID= (SELECT SUBSTR(STARTDATE,1,6) FROM MAX_MTH)
+				    AND UPPER(MARKET_NAME) IN ('DOMESTIC')
+				    AND UPPER(PHASE_GROUP_NAME) LIKE '%ACT%'
+				    AND UPPER(B.INDICATOR_NAME)  IN ('INV_QTY_UNITS','TOT_STD_COGS','INV_QTY_CAS','INV_SAL','NET_NET_SAL')
+				    AND G.SALES_OFFICE = 'PHARMA & SPEC RETAIL' AND (G.CUSTOMER_LEVEL_3_DESC NOT IN ('PRIVATE HOSPITAL','NHS HOSPITALS','AAH UK') OR G.CUSTOMER_LEVEL_4_DESC = 'AAH WHOLESALE UK')
+				    GROUP BY 
+				    D.COMPANY_CODE,
+				    H.MATERIAL_NUMBER,
+				    H.MATERIAL_DESCRIPTION,
+				    A.PRODUCT_ID,
+				    A.MONTH_ID,
+				    B.INDICATOR_NAME
+				) FT 
+				LEFT JOIN PRD_UKI.UKI_DTM_SNU.LKUP_PRODUCT_CLUSTERPACK_CONV CON ON FT.MATERIAL_NUMBER=CON.PRODUCT_CODE
+				WHERE FT.MATERIAL_NUMBER in (select distinct product_code from PRD_UKI.UKI_DSP_SNU.dim_product 
+				-- where --product_code = 'ELEMENTAL _10862' and prod_hier_local_6_id = '1127043' and sales_organisation = '4810'
+				-- where prod_hier_local_6_id = '1125695' and sales_organisation = '4810'
+				)
+				GROUP BY FT.COMPANY_CODE,FT.MATERIAL_NUMBER,FT.MONTH_ID,FT.PRODUCT_ID,CON.CONVERSION_MULTIPLIER,FT.MATERIAL_DESCRIPTION
+				)
+				-- SELECT * FROM CTE
+				
+				,COM_COGS AS(
+				SELECT 
+				CTE.COMPANY_CODE,
+				SNU_PRD.PROD_HIER_LOCAL_6_ID AS SNU_PROD_HIER_LOCAL_6_ID,
+				e.PROD_HIER_LOCAL_6_NAME AS PROD_HIER_LOCAL_6_NAME,
+				-- CTE.MONTH_ID,
+				MAX(CTE.CONVERSION_MULTIPLIER) AS CONVERSION_MULTIPLIER,
+				SUM(CTE.INVOICED_QTY_UNIT) AS INVOICED_QTY_UNIT,
+				SUM(CTE.TOTAL_STD_COGS*1000) AS TOTAL_STD_COGS,
+				SUM(CTE.INV_QTY_CAS) AS INV_QTY_CAS
+				FROM CTE
+				JOIN (SELECT *,ROW_NUMBER() OVER (PARTITION BY PRODUCT_CODE ORDER BY PRODUCT_ID DESC) AS RN  FROM PRD_UKI.UKI_DTM_SNU.DIM_PRODUCT QUALIFY RN=1) SNU_PRD ON CTE.SKU=SNU_PRD.PRODUCT_CODE
+				left join  PRD_UKI.UKI_DTM_SNU.DIM_PRODUCT_HIER_LOCAL_6 e  on e.PROD_HIER_LOCAL_6_ID=SNU_PRD.PROD_HIER_LOCAL_6_ID
+				GROUP BY
+				CTE.COMPANY_CODE,
+				SNU_PRD.PROD_HIER_LOCAL_6_ID,
+				e.PROD_HIER_LOCAL_6_NAME
+				-- CTE.MONTH_ID
+				)
+				SELECT 
+				COMPANY_CODE,
+				SNU_PROD_HIER_LOCAL_6_ID,
+				PROD_HIER_LOCAL_6_NAME,
+				CONVERSION_MULTIPLIER,
+				INVOICED_QTY_UNIT,
+				TOTAL_STD_COGS,
+				INV_QTY_CAS,
+				CASE 
+				    WHEN INVOICED_QTY_UNIT <> 0 THEN TOTAL_STD_COGS/(INVOICED_QTY_UNIT*CONVERSION_MULTIPLIER)
+				    
+				    ELSE 0 
+				END AS WEIGHTED_COGS_PER_UNIT
+				
+				FROM COM_COGS
+				    
+				    ", null, [EnableFolding=true])
+				in
+				    Source
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,116 @@
+table MDS_NURSES
+	lineageTag: 7299db21-ff52-4838-b90b-fa536b314227
+
+	column CODE
+		dataType: string
+		lineageTag: e61c7b83-4f6b-4ecb-88a2-742f8dd56e22
+		summarizeBy: none
+		sourceColumn: CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT
+		dataType: string
+		lineageTag: 183164e1-01ba-4713-b4dc-b89229542ad7
+		summarizeBy: none
+		sourceColumn: CONTRACT
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION
+		dataType: string
+		lineageTag: 2b9a2c91-0548-48ef-96ad-70d234fc4463
+		summarizeBy: none
+		sourceColumn: REGION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPM
+		dataType: string
+		lineageTag: 7a393fd8-fea2-4d47-bad9-f47ca6c024fb
+		summarizeBy: none
+		sourceColumn: CPM
+
+		annotation SummarizationSetBy = Automatic
+
+	column HOLDER
+		dataType: string
+		lineageTag: cfc5a13f-8270-417f-91c9-fb0b62a5fa16
+		summarizeBy: none
+		sourceColumn: HOLDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column NURSE_WTE
+		dataType: double
+		lineageTag: f235db30-6933-4b46-ba65-088dcd76861d
+		summarizeBy: sum
+		sourceColumn: NURSE_WTE
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OVERWRITE
+		dataType: string
+		lineageTag: 8ae6df88-3b69-4ba4-807c-c28d8daca7be
+		summarizeBy: none
+		sourceColumn: OVERWRITE
+
+		annotation SummarizationSetBy = Automatic
+
+	column NOTES
+		dataType: string
+		lineageTag: d13e12ea-acdf-4750-8f73-43b2812b75af
+		summarizeBy: none
+		sourceColumn: NOTES
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Nurses_Salary = MDS_NURSES[NURSE_WTE]*MDS_NURSES[LonorNonLon_Salary]
+		lineageTag: 7eaf9fd6-173a-4765-a900-2e05e55867a6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'London/Non London'
+		dataType: string
+		lineageTag: 916284db-e6e8-4700-8a0f-f9c6eabc3d36
+		summarizeBy: none
+		sourceColumn: London/Non London
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Nurses_Cost = ```
+			
+			Var London_Salary = 61470.526224 //CALCULATE(SUM(MDS_NURSING_CUST_SERVICE[VALUE]), MDS_NURSING_CUST_SERVICE[KEY] = "London Nurse")
+			Var Non_London_Salary = 57372 //CALCULATE(SUM(MDS_NURSING_CUST_SERVICE[VALUE]), MDS_NURSING_CUST_SERVICE[KEY] = "Non-London Nurse")  //57372 //
+			Var Manager_Salary = 83560.96 //CALCULATE(SUM(MDS_NURSING_CUST_SERVICE[VALUE]), MDS_NURSING_CUST_SERVICE[KEY] = "CPM (Nurse Manager)")
+			Var Nurse_WTE = SUM(MDS_NURSES[NURSE_WTE])
+			RETURN
+			IF(MDS_NURSES[London/Non London] = "London",London_Salary*MDS_NURSES[NURSE_WTE],Non_London_Salary*MDS_NURSES[NURSE_WTE])+(Manager_Salary*(MDS_NURSES[NURSE_WTE]/7))
+			
+			```
+		formatString: #,0.00
+		lineageTag: 1eddc5f6-a11f-433c-b722-978ce88d46d2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MDS_NURSES = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_UKI_ANL_WH",[Implementation="2.0", Role="PRD_UKI_USER"]){[Name="PRD_UKI"]}[Data], "SELECT * FROM PRD_UKI.UKI_DSP_SNU.CONTRACT_PNL_NURSES", null, [EnableFolding=true]),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"LONDON_WEIGHTING", "London/Non London"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

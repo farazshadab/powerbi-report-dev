@@ -1,0 +1,123 @@
+table MDS_UK_CONTRACT_N
+	lineageTag: 85360b26-c6c1-42ce-98d8-642249945605
+
+	column NAME
+		dataType: string
+		lineageTag: cbef22d0-bcff-4430-b5c9-26a2be8b55bf
+		summarizeBy: none
+		sourceColumn: NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column MDS_CODE
+		dataType: string
+		lineageTag: 5ab9388c-416a-45c5-8572-876b3b9696ea
+		summarizeBy: none
+		sourceColumn: MDS_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_N
+		dataType: string
+		lineageTag: 9ccf7fa1-1e96-46e4-9326-eaec28a7f39c
+		summarizeBy: none
+		sourceColumn: CONTRACT_N
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_R
+		dataType: string
+		lineageTag: 903f56b2-59c8-40b2-a9ab-cf3e7d09a892
+		summarizeBy: none
+		sourceColumn: CONTRACT_R
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUB_CONTRACT_STATUS
+		dataType: string
+		lineageTag: 8190e75a-0817-480d-97ae-2ae75d8aed5d
+		summarizeBy: none
+		sourceColumn: SUB_CONTRACT_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_PRICING_START_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0a4b2874-3dc6-4ea1-8c49-767cab652acd
+		summarizeBy: none
+		sourceColumn: CONTRACT_PRICING_START_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTRACT_PRICING_END_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3343519d-4bcc-4b20-ac68-8552ed3cd9c6
+		summarizeBy: none
+		sourceColumn: CONTRACT_PRICING_END_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ON_FP10
+		dataType: string
+		lineageTag: 45705c96-4100-499d-8530-431ea5875b33
+		summarizeBy: none
+		sourceColumn: ON_FP10
+
+		annotation SummarizationSetBy = Automatic
+
+	column PREVIOUS_CONTRACT_ID
+		dataType: string
+		lineageTag: 9b035fcb-9be0-4449-a110-a2f82e59e93c
+		summarizeBy: none
+		sourceColumn: PREVIOUS_CONTRACT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NEXT_CONTRACT_ID
+		dataType: string
+		lineageTag: 04b4cec9-3dc8-4493-8cd8-df1b8422c68c
+		summarizeBy: none
+		sourceColumn: NEXT_CONTRACT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CURRENT_CONTRACT
+		dataType: string
+		lineageTag: 318552d6-e60f-4c4a-8b4a-4c94581dd814
+		summarizeBy: none
+		sourceColumn: CURRENT_CONTRACT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CURRENT_CONTRACTED_FUNDING
+		dataType: double
+		lineageTag: 7ac243f7-5046-463d-b46a-18c469960448
+		summarizeBy: sum
+		sourceColumn: CURRENT_CONTRACTED_FUNDING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FUTURE_CONTRACT_FP10_MODEL
+		dataType: string
+		lineageTag: d1277a9b-e454-4182-8441-dc3c482522bc
+		summarizeBy: none
+		sourceColumn: FUTURE_CONTRACT_FP10_MODEL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MDS_UK_CONTRACT_N = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_UKI_ANL_WH",[Implementation="2.0", Role="PRD_UKI_USER"]){[Name="PRD_UKI"]}[Data], "SELECT * FROM PRD_UKI.UKI_STG_SNU.STG_MDS_UK_CONTRACT_N", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

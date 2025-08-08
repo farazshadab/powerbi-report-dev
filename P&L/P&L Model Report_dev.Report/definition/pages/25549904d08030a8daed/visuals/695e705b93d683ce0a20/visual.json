@@ -1,0 +1,150 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "695e705b93d683ce0a20",
+  "position": {
+    "x": 0,
+    "y": 114.21221864951768,
+    "z": 0,
+    "height": 530.93247588424435,
+    "width": 1280,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_MEDICAL_CONTRACT_R"
+                    }
+                  },
+                  "Property": "CONTRACT_R_NAME"
+                }
+              },
+              "queryRef": "DIM_MEDICAL_CONTRACT_R.CONTRACT_R_NAME",
+              "nativeQueryRef": "CONTRACT_R_NAME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_MEDICAL_CONTRACT_R"
+                    }
+                  },
+                  "Property": "Nutricia_YES_NO"
+                }
+              },
+              "queryRef": "DIM_MEDICAL_CONTRACT_R.Nutricia_YES_NO",
+              "nativeQueryRef": "Nutricia_YES_NO"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Community_Measures"
+                    }
+                  },
+                  "Property": "NetSales_Community"
+                }
+              },
+              "queryRef": "Community_Measures.NetSales_Community",
+              "nativeQueryRef": "NetSales_Community"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Community_Measures"
+                    }
+                  },
+                  "Property": "COGs_Community"
+                }
+              },
+              "queryRef": "Community_Measures.COGs_Community",
+              "nativeQueryRef": "COGs_Community"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Community_Measures"
+                    }
+                  },
+                  "Property": "Distribution_Community"
+                }
+              },
+              "queryRef": "Community_Measures.Distribution_Community",
+              "nativeQueryRef": "Distribution_Community"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Community_Measures"
+                    }
+                  },
+                  "Property": "GrossProfit_Community"
+                }
+              },
+              "queryRef": "Community_Measures.GrossProfit_Community",
+              "nativeQueryRef": "GrossProfit_Community"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Community_Measures"
+                    }
+                  },
+                  "Property": "GrossProfit(%)_Community"
+                }
+              },
+              "queryRef": "Community_Measures.GrossProfit(%)_Community",
+              "nativeQueryRef": "GrossProfit(%)_Community"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Community_Measures"
+                    }
+                  },
+                  "Property": "Contribution_Community"
+                }
+              },
+              "queryRef": "Community_Measures.Contribution_Community",
+              "nativeQueryRef": "Contribution_Community"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Community_Measures"
+                    }
+                  },
+                  "Property": "Contribution(%)_Community"
+                }
+              },
+              "queryRef": "Community_Measures.Contribution(%)_Community",
+              "nativeQueryRef": "Contribution(%)_Community"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
