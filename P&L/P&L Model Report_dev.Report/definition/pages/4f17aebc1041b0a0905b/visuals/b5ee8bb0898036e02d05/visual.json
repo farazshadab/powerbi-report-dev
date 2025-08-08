@@ -1,0 +1,373 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "b5ee8bb0898036e02d05",
+  "position": {
+    "x": 0,
+    "y": 114.21221864951768,
+    "z": 0,
+    "height": 530.93247588424435,
+    "width": 1280
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCT"
+                    }
+                  },
+                  "Property": "PRODUCT_DESCRIPTION"
+                }
+              },
+              "queryRef": "DIM_PRODUCT.PRODUCT_DESCRIPTION",
+              "nativeQueryRef": "PRODUCT_DESCRIPTION"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Hospital_Measures"
+                    }
+                  },
+                  "Property": "Volume_Hospital"
+                }
+              },
+              "queryRef": "Hospital_Measures.Volume_Hospital",
+              "nativeQueryRef": "Volume_Hospital"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Hospital_Measures"
+                    }
+                  },
+                  "Property": "Invoiced_Hospital"
+                }
+              },
+              "queryRef": "Hospital_Measures.Invoiced_Hospital",
+              "nativeQueryRef": "Invoiced_Hospital"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Hospital_Measures"
+                    }
+                  },
+                  "Property": "NetSales_Hospital"
+                }
+              },
+              "queryRef": "Hospital_Measures.NetSales_Hospital",
+              "nativeQueryRef": "NetSales_Hospital"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Hospital_Measures"
+                    }
+                  },
+                  "Property": "FP10_Hospital"
+                }
+              },
+              "queryRef": "Hospital_Measures.FP10_Hospital",
+              "nativeQueryRef": "FP10_Hospital"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Hospital_Measures"
+                    }
+                  },
+                  "Property": "Discount_FP10_Hospital"
+                }
+              },
+              "queryRef": "Hospital_Measures.Discount_FP10_Hospital",
+              "nativeQueryRef": "Discount_FP10_Hospital"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Hospital_Measures"
+                    }
+                  },
+                  "Property": "COGs_Hospital"
+                }
+              },
+              "queryRef": "Hospital_Measures.COGs_Hospital",
+              "nativeQueryRef": "COGs_Hospital"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Hospital_Measures"
+                    }
+                  },
+                  "Property": "Distribution_Hospital"
+                }
+              },
+              "queryRef": "Hospital_Measures.Distribution_Hospital",
+              "nativeQueryRef": "Distribution_Hospital"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Hospital_Measures"
+                    }
+                  },
+                  "Property": "Hospital_Sponsorshp"
+                }
+              },
+              "queryRef": "Hospital_Measures.Hospital_Sponsorshp",
+              "nativeQueryRef": "Hospital_Sponsorshp"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Hospital_Measures"
+                    }
+                  },
+                  "Property": "GrossProfit_Hospital"
+                }
+              },
+              "queryRef": "Hospital_Measures.GrossProfit_Hospital",
+              "nativeQueryRef": "GrossProfit_Hospital"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Hospital_Measures"
+                    }
+                  },
+                  "Property": "GrossProfit(%)_Hospital"
+                }
+              },
+              "queryRef": "Hospital_Measures.GrossProfit(%)_Hospital",
+              "nativeQueryRef": "GrossProfit(%)_Hospital"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b03223d59e15a67ee8bc",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Volume_Hospital"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "h",
+              "Entity": "Hospital_Measures",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "Comparison": {
+                      "ComparisonKind": 0,
+                      "Left": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "h"
+                            }
+                          },
+                          "Property": "Volume_Hospital"
+                        }
+                      },
+                      "Right": {
+                        "Literal": {
+                          "Value": "null"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "491a4ddc6ea30717e0eb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DIM_PRODUCT"
+              }
+            },
+            "Property": "PRODUCT_DESCRIPTION"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d4e09170422d9817b519",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "NetSales_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a3954c2edac32291969c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "FP10_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "63003f5f0e5500600ebc",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Discount_FP10_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "54fa19f6e2cb38d262b8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Invoiced_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "48a1f88b16b35790dcba",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "COGs_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c2a987020da7c4dbd898",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Distribution_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4932815505ead4ade91a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "GrossProfit_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "93663a5aa0ea46803030",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "GrossProfit(%)_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d494962155e7644764b6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Hospital_Sponsorshp"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

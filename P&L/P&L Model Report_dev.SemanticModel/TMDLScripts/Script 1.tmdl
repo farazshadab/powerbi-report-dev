@@ -1,0 +1,64 @@
+createOrReplace
+
+	table PATIENT_COUNT
+		lineageTag: c105d335-2ec2-447b-90ca-52afe08e6b8e
+
+		column CONTRACT_ID
+			dataType: string
+			lineageTag: ea16a767-2bf7-4a64-bfaf-c5ad9608866d
+			summarizeBy: none
+			sourceColumn: CONTRACT_ID
+
+			annotation SummarizationSetBy = Automatic
+
+		column PATIENT_ID
+			dataType: string
+			lineageTag: 2237e680-d0b2-402f-9510-54cd3742e330
+			summarizeBy: none
+			sourceColumn: PATIENT_ID
+
+			annotation SummarizationSetBy = Automatic
+
+		column PRODUCT_ID
+			dataType: string
+			lineageTag: 0e4a83f5-a69c-4bf8-b4ec-2321c62c6c2c
+			summarizeBy: none
+			sourceColumn: PRODUCT_ID
+
+			annotation SummarizationSetBy = Automatic
+
+		column GEOGRAPHY_ID
+			dataType: string
+			lineageTag: f791097e-523c-4304-a78f-f77c11152b40
+			summarizeBy: none
+			sourceColumn: GEOGRAPHY_ID
+
+			annotation SummarizationSetBy = Automatic
+
+		column CURO_SUB_CONTRACT_ID
+			dataType: string
+			lineageTag: eb38ad8b-633d-4d4d-9b21-bb9510307215
+			summarizeBy: none
+			sourceColumn: CURO_SUB_CONTRACT_ID
+
+			annotation SummarizationSetBy = Automatic
+
+		column Local_2 = RELATED(DIM_PRODUCT[PROD_HIER_LOCAL_2_NAME])
+			lineageTag: 4b31712c-fffc-4647-97b8-0f8f5996a117
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		partition PATIENT_COUNT = m
+			mode: import
+			source =
+					let
+					    Source = Value.NativeQuery(Snowflake.Databases("danone.west-europe.azure.snowflakecomputing.com","PRD_SNS_UKI_ANL_WH",[Role="PRD_SNS_UKI_USER", Implementation="2.0"]){[Name="PRD_SNS_UKI"]}[Data], "SELECT#(lf)  A.contract_id,#(lf)  A.patient_id,#(lf)  A.product_id,#(lf)  A.GEOGRAPHY_ID,#(lf)  B.CURO_SUB_CONTRACT_ID#(lf)FROM#(lf)                SNS_UKI_DTM_SNU.FACT_CURO_PATIENT_REGIMEN A#(lf)    LEFT JOIN   SNS_UKI_DSP_SNU.DIM_CURO_PATIENT_MASKED B  ON (A.PATIENT_ID = B.PATIENT_ID)#(lf)#(lf)where #(lf)    REQUESTED_DELIVERY_DATE_ID>= '20230102' AND#(lf)    REGIMEN_STATUS = 'Active' AND#(lf)    B.DWH_CURRENT_FLAG = 1 AND    #(lf)    (B.PMS_PATIENT_CATEGORY <> 'Pump Only' OR B.PMS_PATIENT_CATEGORY IS null)AND#(lf)    B.current_patient_status IN ('Active','On Hold')#(lf)GROUP BY#(lf)  A.contract_id,#(lf)  A.patient_id,#(lf)  A.product_id,#(lf)  A.GEOGRAPHY_ID,#(lf)  B.CURO_SUB_CONTRACT_ID", null, [EnableFolding=true]),
+					    #"Changed Type" = Table.TransformColumnTypes(Source,{{"CONTRACT_ID", type text}, {"PATIENT_ID", type text}, {"PRODUCT_ID", type text}, {"GEOGRAPHY_ID", type text}, {"CURO_SUB_CONTRACT_ID", type text}})
+					in
+					    #"Changed Type"
+
+		annotation PBI_NavigationStepName = Navigation
+
+		annotation PBI_ResultType = Table
+

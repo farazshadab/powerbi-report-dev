@@ -370,5 +370,359 @@
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c2f1879c197d37350250",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DIM_MEDICAL_CONTRACT_R"
+              }
+            },
+            "Property": "CONTRACT_R_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f99a55646b1ec33b90c1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DIM_MEDICAL_CONTRACT_R"
+              }
+            },
+            "Property": "Nutricia_YES_NO"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5eda5376a70148cd9540",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Volume_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bed54529a51e2c1e2ae4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "FP10_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2be25c6f35bdd97e941a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Discount_FP10_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4889ffbc3de7330a188e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Disc%_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "853259b74ba2b5c51642",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Rebate_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e21db61021e9b91c35a0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "NetSales_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0060314db03d02910a11",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "COGs_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fe74f96dcc3ec0716967",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Distribution_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6b2f233cdd23c8821865",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "GrossProfit_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "be2b82221e53b25909d2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "GrossProfit(%)_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b020634db94b0ee6d0ac",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Hospital_Sponsorshp"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "625765df07127a81d126",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Nurses_hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c4933ca02b3449848715",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "PumpDep'n_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c9444fd00c000244c730",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Pump_Servicng_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "54afc4109d8b0c04ebb2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "customer servc cost hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "80fba73d476e1080a72a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Others_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "00c6bda0539335ea738e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Contribution_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "97748e2d45a5bed2cc99",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Contribution(%)_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4f99885b24bd92e08942",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Pump_Volume_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9f16fcec370a6e3d93d4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Margin_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "53bce5927be2d2060c04",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Margin(%)_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8ede18df6ee1c40a470c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "NS/Unit_Hospital"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1de1f4e390b4828ba004",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Hospital_Measures"
+              }
+            },
+            "Property": "Cogs/Unit_Hospital"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

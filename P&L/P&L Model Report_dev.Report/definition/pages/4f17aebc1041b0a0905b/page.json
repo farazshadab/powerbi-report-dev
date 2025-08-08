@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "4f17aebc1041b0a0905b",
+  "displayName": "Prod Hospital Contract UAT",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}
