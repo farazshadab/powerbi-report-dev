@@ -20,7 +20,7 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBIDesktopVersion = 2.145.1602.0 (25.07)+10647c9fa319b5e39936cdb21328038c371d1fe4
 
-annotation PBI_QueryOrder = ["Hospital_Measures","Homeward_Measures","ContractTotal_Measures","Community_Measures","Total_Measures","Generic_Measures","DIM_GEO_TERRITORY","DIM_GEO_COUNTRY","DIM_GEO_CCG","DIM_PRODUCT_MANUFACTURER","DIM_PRODUCT","DIM_MEDICAL_CONTRACT","DIM_MEDICAL_CONTRACT_R","DIM_CURO_SUB_CONTRACT","Dim_Product_Code","P&L_Query","P&L_Pivot","Color_Codes","Pump_Details","Pump_Pivot","Patients_Pivot","Cogs_Hos_HW","Cogs_Comm","MDS_REBATES","MDS_SPONSORSHIP","MDS_NURSING_CUST_SERVICE","MDS_NURSES","MDS_CPD","MDS_COGS","MDS_UK_CONTRACT_N","Cogs_Community_","DIM_Contract_details","P&L_Query (og)","P&L_Pivot (og)","Cogs_Community_Original (og)","DB","Cogs_Community_Original_with_month","Sales_Channel_Mapping","Product_classification","Currency_Table","Community_Product_Grouping (2)","Cogs_Community_Original-->0728","PATIENT_COUNT"]
+annotation PBI_QueryOrder = ["Hospital_Measures","Homeward_Measures","ContractTotal_Measures","Community_Measures","Total_Measures","Generic_Measures","DIM_GEO_TERRITORY","DIM_GEO_COUNTRY","DIM_GEO_CCG","DIM_PRODUCT_MANUFACTURER","DIM_PRODUCT","DIM_MEDICAL_CONTRACT","DIM_MEDICAL_CONTRACT_R","DIM_CURO_SUB_CONTRACT","Dim_Product_Code","P&L_Query","P&L_Pivot","Color_Codes","Pump_Details","Pump_Pivot","Patients_Pivot","Cogs_Hos_HW","Cogs_Comm","MDS_REBATES","MDS_SPONSORSHIP","MDS_NURSING_CUST_SERVICE","MDS_NURSES","MDS_CPD","MDS_COGS","MDS_UK_CONTRACT_N","Cogs_Community_","DIM_Contract_details","P&L_Query (og)","P&L_Pivot (og)","Cogs_Community_Original (og)","DB","Cogs_Community_Original_with_month","Sales_Channel_Mapping","Product_classification","Currency_Table","Community_Product_Grouping (2)","Cogs_Community_Original-->0728","PATIENT_COUNT","Last Updated date"]
 
 annotation __TEdtr = 1
 
@@ -58,6 +58,7 @@ ref table Product_classification
 ref table MDS_UK_CONTRACT_N
 ref table No_of_Roles_and_Costs
 ref table PATIENT_COUNT
+ref table 'Last Updated date'
 
 ref cultureInfo en-US
 

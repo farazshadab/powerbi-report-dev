@@ -17094,22 +17094,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "homeward_measure.entity_123": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Homeward_Measures",
-			          "ConceptualProperty": "123"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "123": {
-			            "State": "Generated"
-			          }
-			        }
-			      ]
-			    },
 			    "contract_total_measure.entity__cogs_Unit_ContractTotal_FormatString": {
 			      "Definition": {
 			        "Binding": {

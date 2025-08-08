@@ -26,13 +26,6 @@ relationship ebd7b489-5c19-19b4-5d62-8408fd1654b6
 	fromColumn: DIM_MEDICAL_CONTRACT.CONTRACT_R_ID
 	toColumn: Pump_Details.CONTRACT_R_ID
 
-relationship 822d6ba9-f9ec-b1f4-5d3c-d4da431cce65
-	isActive: false
-	crossFilteringBehavior: bothDirections
-	toCardinality: many
-	fromColumn: P&L_Query.CURO_SUB_CONTRACT_ID
-	toColumn: Pump_Details.CURO_SUB_CONTRACT_ID
-
 relationship 37d3896a-e727-7191-ab73-c2e7f49e57c5
 	fromColumn: Pump_Details.PRODUCT_ID
 	toColumn: DIM_PRODUCT.PRODUCT_ID
@@ -87,6 +80,7 @@ relationship 59f5662d-16ab-444b-f503-b20bb055927b
 	toColumn: DIM_GEO_TERRITORY.GEO_TERRITORY_ID
 
 relationship 365401cb-e6d1-a742-98a6-f12ec70cd5f5
+	crossFilteringBehavior: bothDirections
 	fromColumn: P&L_Pivot.GEOGRAPHY_ID
 	toColumn: DIM_GEO_TERRITORY.GEO_TERRITORY_ID
 

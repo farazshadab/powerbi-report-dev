@@ -1,0 +1,27 @@
+table 'Last Updated date'
+	lineageTag: c0a91eb9-c42d-45ed-a62d-6073f8263b56
+
+	column 'Last Refreshed'
+		dataType: string
+		lineageTag: fb975551-8a5f-478c-bedb-cf04230858ec
+		summarizeBy: none
+		sourceColumn: Last Refreshed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Last Updated date' = m
+		mode: import
+		source =
+				let
+				    RefereshTable = #table(
+				            {"Last Refreshed"},
+				            {{
+				    DateTime.LocalNow() }}
+				    )
+				    in
+				    RefereshTable
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

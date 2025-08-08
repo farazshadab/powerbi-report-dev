@@ -5,9 +5,6 @@
   "displayOption": "FitToWidth",
   "height": 1480,
   "width": 1280,
-  "filterConfig": {
-    "filterSortOrder": "Custom"
-  },
   "objects": {
     "background": [
       {

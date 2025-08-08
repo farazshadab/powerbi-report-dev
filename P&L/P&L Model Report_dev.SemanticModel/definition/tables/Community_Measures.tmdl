@@ -48,7 +48,7 @@ table Community_Measures
 			 Var Conversion_Rate = CALCULATE(SUM(Currency_Table[GBP_Conversion]),Currency_Table[Currency] = Selected_Country)
 			VAR Convereted_Currency = Main_Value * Conversion_Rate
 			    RETURN
-			        Convereted_Currency
+			        Convereted_Currency --no updates to dax, calculation was updated in query
 		lineageTag: a8fe582e-7626-4ac1-8a9b-6be324aaec2b
 
 		formatStringDefinition =
@@ -188,6 +188,11 @@ table Community_Measures
 			(CALCULATE([Community_Volume],FILTER(DIM_PRODUCT,DIM_PRODUCT[Classification] IN {"""Paeds - HEIF""", """Paeds - sip"""}))/CALCULATE([Community_Volume],ALLSELECTED('P&L_Query')))*(-1982058.02354815/14600081.01)
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 21459f50-be0c-4b86-bec9-86d05bd97d57
+
+	measure 'Test Measure' = [Community_Volume]
+		lineageTag: ce868ac9-e4fd-49c9-8c50-8ddf6faaed65
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition Community_Measures = m
 		mode: import

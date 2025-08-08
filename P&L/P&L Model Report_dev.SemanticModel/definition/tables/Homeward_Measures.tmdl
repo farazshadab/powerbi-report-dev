@@ -314,12 +314,6 @@ table Homeward_Measures
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
-	measure 123 =
-			
-			SUM('P&L_Query'[MEASURE_VALUE])
-		formatString: 0
-		lineageTag: 1a1a47cf-47c4-4ab2-ac0b-da4cb277973e
-
 	measure Current_Active_Patient_Nos = DISTINCTCOUNT(PATIENT_COUNT[PATIENT_ID])
 		formatString: 0
 		lineageTag: 834962f6-aa69-4bfb-9b41-9910a8013128
